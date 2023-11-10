@@ -11,9 +11,7 @@
 <a href="https://www.douyin.com/user/MS4wLjABAAAAtanaGDoe_VRcpfRVAsEoYSTvSf4AnjXw2qPgWDvaosw"><img alt="Static Badge" src="https://img.shields.io/badge/%E6%8A%96%E9%9F%B3-%E9%97%9C%E6%B3%A8%E6%88%91-brightgreen?logo=tiktok">
 </a>
 
-我使用的markdown编辑器是Obsidian，不是IDEA或者Typora。
-
-由于不同编辑器对markdown语法的解释稍微有点差异，所以上传的md文件可能格式/排版不对 (在我自己这里是正常显示的)。
+👋hi，你找到啦，就是这里，这是一个从myGithub中拆分出来的新的仓库，维护着我最新的学习记录😁
 
 ---
 
