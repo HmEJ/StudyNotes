@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsoft.mapper.EmpMapper">
+
+        <resultMap id="map" type="emp">
+            <id property="empno" column="empno"/>
+            <result property="ename" column="ename"/>
+            <result property="job" column="job"/>
+            <result property="mgr" column="mgr"/>
+            <result property="hiredate" column="hiredate"/>
+            <result property="sal" column="sal"/>
+            <result property="comm" column="comm"/>
+            <result property="deptno" column="deptno"/>
+
+            <association property="dept" javaType="dept" autoMapping="true"/>
+        </resultMap>
+
+      <select id="selectAll" resultMap="map">
+            select e.*,d.* from emp e join dept d using (deptno)
+      </select>
+
+    <insert id="insertEmp" parameterType="emp">
+        insert into emp(ename,job,mgr,hiredate,sal,comm,deptno)
+        values (#{ename},#{job},#{mgr},#{hiredate},#{sal},#{comm},#{deptno})
+    </insert>
+
+    <delete id="deleteEmp" parameterType="int">
+        delete from emp where empno = #{empno}
+    </delete>
+
+    <update id="updateEmp" parameterType="emp">
+        update emp
+        <set>
+            <if test="ename!=null">
+                ename = #{ename},
+            </if>
+            <if test="job!=null">
+                job = #{job},
+            </if>
+            <if test="mgr!=null">
+                mgr = #{mgr},
+            </if>
+            <if test="hiredate!=null">
+                hiredate = #{hiredate},
+            </if>
+            <if test="sal!=null">
+                sal = #{sal},
+            </if>
+            <if test="comm!=null">
+                comm=#{comm},
+            </if>
+            <if test="deptno!=null">
+                deptno = #{deptno}
+            </if>
+        </set>
+        <where>
+            <if test="empno!=null">
+                empno=#{empno}
+            </if>
+        </where>
+    </update>
+
+</mapper>
