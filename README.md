@@ -28,6 +28,7 @@
 4. [👉MySql](SQL数据库.md)
 5. [👉JDK17常用新特性](JDK17常用新特性.md)
 6. [👉面试知识点(自我总结版)](面试知识点/面试知识点.md)
+7. [👉clash配置](clash配置.md)
 
 </details>
 
@@ -73,6 +74,9 @@
 
 ## 框架
 
+<details>
+    <summary>framework</summary>
+
 1. [👉Maven逆向工程自动生成MyBatis骨架](mybatis-generator.md)
 2. [👉Spring学习记录|最后一天|完全体|10-6](SpringPractice10-6/学习记录10-6.md)
 3. [👉SpringMVC学习记录|第一天|HelloWord阶段|10-7](SpringMVC/SpringMVC学习记录10-7.md)
@@ -83,11 +87,18 @@
 8. [👉springboot整合 | 三期项目准备阶段](springboot-jsoft03/记录.md)
 9. [👉springboot学习记录](springboot-helloworld/学习记录.md)
 
+</details>
+
+
 ## 设计模式
 
 [设计模式](design_pattern/设计模式.md)
 
 ## 面试记录
+
+<details>
+    <summary>interview</summary>
+
 
 由于前三次面试，记录人员记录的并不规范，整理难度较大，所以我懒得整理了，从第四次开始，之后的面试记录我会整理好。前三次面试记录我上传一个[doc文档](面试记录.docx)吧
 
@@ -99,9 +110,16 @@
 1. 🚫第四次面试9-4
 1. [👉第四次面试9-8](面试记录9-8.md)
 
+    
+</details>
+
 ---
 
 ## 小组测试
+
+<details>
+    <summary>exams</summary>
+
 
 1. [👉数组测验💯](面试简单题测试.md)
 2. [👉异常和常用类测验💯](模拟测试摸底题.md)
@@ -110,6 +128,8 @@
 5. [👉线程测验💯](线程简单测试题.md)
 6. [👉SQL测验💯](SQL简单测试题.md)
     附: 💾[sql文件](tb_order.sql)
+
+</details>
 
 ---
 
