@@ -10,7 +10,7 @@ Docker¿ÉÒÔÈÃ¿ª·¢Õß´ò°ü×Ô¼º³ÉÓ¦ÓÃ³ÉÒ»¸ö¾µÏñ£¬·¢²¼µ½·şÎñÆ÷ÉÏ£¬»òÕß·¢²¼µ½¿ªÔ´ÉçÇø£¬
 
 **É³ºĞ**£¨Ó¢Óï£ºsandbox£¬ÓÖÒëÎª**É³Ïä**£©£¬[¼ÆËã»ú×¨Òµ](https://baike.baidu.com/item/¼ÆËã»ú×¨Òµ/10586245?fromModule=lemma_inlink)ÊõÓï£¬ÔÚ¼ÆËã»ú°²È«ÁìÓòÖĞÊÇÒ»ÖÖ°²È«»úÖÆ£¬ÎªÔËĞĞÖĞµÄ³ÌĞòÌá¹©µÄ¸ôÀë»·¾³¡£Í¨³£ÊÇ×÷ÎªÒ»Ğ©À´Ô´²»¿ÉĞÅ¡¢¾ßÆÆ»µÁ¦»òÎŞ·¨ÅĞ¶¨³ÌĞòÒâÍ¼µÄ³ÌĞòÌá¹©ÊµÑéÖ®ÓÃ¡£
 
-![img](img\001.jpg) 
+![img](img/001.jpg) 
 
 ## 3¡¢dockerÈİÆ÷ºÍĞéÄâ»úµÄÇø±ğ
 
@@ -18,7 +18,7 @@ Docker¿ÉÒÔÈÃ¿ª·¢Õß´ò°ü×Ô¼º³ÉÓ¦ÓÃ³ÉÒ»¸ö¾µÏñ£¬·¢²¼µ½·şÎñÆ÷ÉÏ£¬»òÕß·¢²¼µ½¿ªÔ´ÉçÇø£¬
 
 ²»Í¬µã£ºdockerÏàµ±ÓÚĞéÄâ»ú¶øÑÔ£¬ÉÙÁËĞéÄâ»ú²Ù×÷ÏµÍ³²ã£¬ÉÙÁËÒ»²ã¾ÍÉÙÁËºÜ¶àµÄ×ÊÔ´ÀË·Ñ£¬ËùÒÔdockerµÄĞ§ÂÊ¸ü¸ß¡£
 
-![img](img\002.jpg) 
+![img](img/002.jpg) 
 
 
 
@@ -42,13 +42,13 @@ dockerÖ÷»úÊÇ±¾µØ´¦ÀídockerÏà¹Ø²Ù×÷µÄ¡£ÔËĞĞÔÚ²Ù×÷ÏµÍ³ÉÏµÄ£¬ÎÒÃÇ²»ÄÜÖ±½Ó¹Û²ìºÍ²Ù×÷
 
 imagesÏàµ±ÓÚÓ²ÅÌÉÏµÄÎÄ¼ş£¬containersÏàµ±ÓÚÔËĞĞÓ²ÅÌÉÏµÄÎÄ¼ş£¬°üÀ¨ÆäÄÚ´æ×´Ì¬¡£
 
-![img](img\001.png)
+![img](img/001.png)
 
-![img](img\002.png)
+![img](img/002.png)
 
 ## 5¡¢ºËĞÄ¸ÅÄî
 
-![img](img\003.jpg) 
+![img](img/003.jpg) 
 
 ºËĞÄÓĞÈı¸ö£¬ÓÃÀ´Á¬½ÓÖ÷»úµÄclients£¬°²×°ÁËdockerµÄÖ÷»úHosts£¬ºÍ±£´æ¾µÏñÎÄ¼şµÄregistries
 
@@ -76,11 +76,11 @@ dockerÖ§³Ö3.10¼°ÒÔÉÏ°æ±¾£¬Ò»¶¨Òª¿´Ò»ÏÂÄÚºË°æ±¾
 
 ÓÃÃüÁî£ºunmae -r
 
-![img](img\003.png)
+![img](img/003.png)
 
 ## 2¡¢Ğ¶ÔØÀÏ°æ±¾docker£¬±ÜÃâ²úÉúÓ°Ïì
 
-![img](img\004.png)
+![img](img/004.png)
 
 ```shell
 yum remove docker \
@@ -93,11 +93,11 @@ yum remove docker \
                   docker-engine
 ```
 
-![img](img\005.png)
+![img](img/005.png)
 
 ## 3¡¢Éı¼¶yumºÍÅäÖÃÔ´
 
-![img](img\006.png)
+![img](img/006.png)
 
 ```
 yum install -y yum-utils
@@ -111,17 +111,17 @@ yum-config-manager \
 
 ´Ë´¦ÊÇ×îĞÂ°æ±¾µÄ°²×°£¬½¨Òé²»Òª°²×°×îĞÂ°æ±¾¡£
 
-![img](img\007.png)
+![img](img/007.png)
 
 ## 5¡¢²é¿´ÀúÊ·°æ±¾µÄdocker
 
-![img](img\008.png)
+![img](img/008.png)
 
 ## 6¡¢°²×°Ö¸¶¨°æ±¾µÄdocker
 
 ÎÒÃÇÍ³Ò»°²×°£º20.10.8°æ±¾
 
-![img](img\009.png)
+![img](img/009.png)
 
 ```
 yum install --setopt=obsoletes=0 docker-ce-<VERSION_STRING> docker-ce-selinux-<VERSION_STRING>.noarch
@@ -133,17 +133,17 @@ yum install --setopt=obsoletes=0 docker-ce-20.10.8-3.el7 docker-ce-selinux-20.10
 
 ## 7¡¢°²×°³É¹¦
 
-![img](img\010.png)
+![img](img/010.png)
 
 ## 8¡¢Æô¶¯·şÎñÑéÖ¤Ò»ÏÂ
 
 Ö´ĞĞÃüÁî£ºdocker --version £¬²é¿´Ò»ÏÂdocker°æ±¾£¬ÓĞĞÅÏ¢´ú±í°²×°³É¹¦
 
-![img](img\011.png)
+![img](img/011.png)
 
 docker°²×°³É¹¦ºó£¬ĞèÒªÆô¶¯docker·şÎñ²Å¿ÉÒÔÓÃ
 
-![img](img\012.png)
+![img](img/012.png)
 
 ÃüÁî£º
 
@@ -161,7 +161,7 @@ systemctl enable docker £º¿ª»ú×ÔÆôdocker·şÎñ
 
 docker images £º²é¿´docker¾µÏñ
 
-![img](img\013.png)
+![img](img/013.png)
 
 REPOSITORY£º¾µÏñµÄÃû×Ö
 
@@ -179,9 +179,9 @@ SIZE£º¾µÏñµÄ´óĞ¡
 
 ÍøÕ¾£º https://hub.docker.com/
 
-![img](img\015.png)
+![img](img/015.png)
 
-![img](img\016.png)
+![img](img/016.png)
 
 Ñ¡ÓÃÕâÖÖÓĞÈÏÖ¤µÄ¾µÏñ
 
@@ -189,7 +189,7 @@ SIZE£º¾µÏñµÄ´óĞ¡
 
 docker search ¾µÏñÃû³Æ
 
-![img](img\014.png)
+![img](img/014.png)
 
 
 
@@ -199,11 +199,11 @@ docker pull ¾µÏñÃû³Æ
 
 docker pull tomcat
 
-![img](img\017.png)
+![img](img/017.png)
 
-![img](img\018.png)
+![img](img/018.png)
 
-![img](img\019.png)
+![img](img/019.png)
 
 TAGµÄlatest´ú±íµ±Ç°¾µÏñµÄ±êÇ©£¬latestÊÇ×îĞÂµÄÒ»¸ö¾µÏñ¡£
 
@@ -215,7 +215,7 @@ docker pull ¾µÏñÃû³Æ:±êÇ©Ãû
 
 docker pull tomcat:8
 
-![img](img\020.png)
+![img](img/020.png)
 
 ## 4¡¢²é¿´ÈİÆ÷
 
@@ -223,7 +223,7 @@ docker ps £º²é¿´ÕıÔÚÔËĞĞµÄÈİÆ÷
 
 docker ps -a £º²é¿´ËùÓĞÈİÆ÷£¬°üÀ¨ÔËĞĞµÄºÍÍ£Ö¹µÄ
 
-![img](img\021.png)
+![img](img/021.png)
 
 CONTAINER ID£ºÈİÆ÷Î¨Ò»±êÊ¶
 
@@ -243,7 +243,7 @@ NAMES£ºÈİÆ÷µÄÃû×Ö£¬ÊÇ×Ô¶¨ÒåµÄ
 
 docker rm ÈİÆ÷µÄÃû×Ö»òÎ¨Ò»±êÊ¶
 
-![img](img\022.png)
+![img](img/022.png)
 
 µ±ÓÃidÒÆ³ıÊ±£¬¿ÉÒÔÖ»ÊäÈëidµÄÇ°¼¸¸ö·ûºÅ£¬docker»á×Ô¶¯È¥ÅäÖÃ£¬µ«ÊÇÒª×¢ÒâÁĞ±íÖĞÊÇ·ñÓĞÀàËÆµÄ£¬ÎªÁËÈ·±£ÒÆ³ıÊ±Ò»¶¨ÊÇ¶ÔµÄ£¬½¨Òé¸´ÖÆÈİÆ÷Î¨Ò»±êÊ¶ÒÆ³ı¡£
 
@@ -259,7 +259,7 @@ docker²Ù×÷¾µÏñÊ±£¬Èç¹ûÓÃµÄÊÇÃû×Ö£¬ÄÇÃ´»áÄ¬ÈÏ¼ÓÉÏ±êÇ©£¬¶ÔÓ¦µÄÊÇlatestÕâ¸ö±êÇ©¡£
 
 docker start ÈİÆ÷id/Ãû×Ö
 
-![img](img\023.png)
+![img](img/023.png)
 
 docker stop ÈİÆ÷id/Ãû×Ö
 
@@ -271,7 +271,7 @@ docker run --name tc -p 8080:8080 tomcat:8»ò¾µÏñid
 
 docker run --name tc1 -p 8080:8080 -d 73365378bc27
 
-![img](img\024.png)
+![img](img/024.png)
 
 --name£º¸øÈİÆ÷È¡Ò»¸öÃû×Ö
 
@@ -291,7 +291,7 @@ docker exec -it ÈİÆ÷µÄÃû×Ö»òid /bin/bash
 
 /bin/bash£ºÊÇÃüÁîĞèÒªµÄÂ·¾¶²ÎÊı
 
-![img](img\025.png)
+![img](img/025.png)
 
 ÈİÆ÷ÄÚ²¿ÈÔÈ»¿ÉÒÔÓÃLinuxÃüÁî¡£
 
@@ -319,7 +319,7 @@ docker logs ÈİÆ÷Ãû³Æ»òid -f£ºÊä³öÈİÆ÷ÈÕÖ¾£¬-f´ú±í³ÖĞøÊä³ö£¬»á±£³ÖÈÕÖ¾Êä³öµÄ×´Ì¬£
 
 Í³Ò»ÏÂÔØ8°æ±¾
 
-![img](img\026.png)
+![img](img/026.png)
 
 ### 2¡¢Æô¶¯MySQL
 
@@ -327,9 +327,9 @@ docker run --name mm -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:8
 
 -e£ºÅäÖÃĞÅÏ¢£¬ÅäÖÃrootµÄÃÜÂë¡£
 
-![img](img\027.png)
+![img](img/027.png)
 
-![img](img\028.png)
+![img](img/028.png)
 
 ### 3¡¢Ä¿Â¼Ó³Éä
 
@@ -342,7 +342,7 @@ docker run --name mmy -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d \
 
 -v£ºÄ¿Â¼Ó³Éä£¬Í¬-p¸ñÊ½¡£Ä¿Â¼ÎÄ¼ş±ØĞëÊÖ¶¯´´½¨²ÅÄÜÓ³Éä¡£
 
-![img](img\029.png)
+![img](img/029.png)
 
 ## 12¡¢´´½¨docker¾µÏñ
 
@@ -360,7 +360,7 @@ RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shang
 
 ÉÏ´«ÎÒÃÇ×¼±¸ºÃµÄspringboot´òºÃµÄ°ü£¬ÔÚ°ÑDockerfileÉÏ´«µ½ÏàÍ¬µÄÄ¿Â¼ÏÂ£¬×¢Òâ£¬Ä¿Â¼Àï²»ÒªÓĞÆäËüµÄÎÄ¼ş¡£
 
-![img](img\030.png)
+![img](img/030.png)
 
 
 
@@ -372,7 +372,7 @@ docker build -t ¾µÏñÃû×Ö£¨×Ô¼ºÈ¡µÄ£¬²»ÄÜÓĞ´óĞ´×ÖÄ¸£©:±êÇ©£¨¿ÉÒÔÊ¡ÂÔ£¬Ê¡ÂÔ´ú±íµÄÊ
 
 docker build -t testspringboot . 
 
-![img](img\031.png)
+![img](img/031.png)
 
 -t£ºÊÇ¸ø¾µÏñÌí¼ÓÒ»¸ö±êÇ©
 
