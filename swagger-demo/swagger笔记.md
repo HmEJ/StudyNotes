@@ -179,3 +179,8 @@ public class User {
 }
 ```
 
+## 访问ui界面
+
+访问 `/swagger-ui.html` 地址 ， 即可查看接口文档
+
+![](img/截图 2023-11-29 22-05-50.png)
