@@ -15,7 +15,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot-init</name>
     <description>springboot-init</description>
-    <packaging>jar</packaging>
 
     <properties>
         <java.version>8</java.version>
@@ -74,14 +73,11 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
             <version>2.1.10.RELEASE</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>1.4.6</version>
+            <version>1.2.12</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -89,14 +85,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>
-                        com.mh.SpringbootInitApplication
-                    </mainClass>
-                    <finalName>
-                        springboot-helloWorld
-                    </finalName>
-                </configuration>
             </plugin>
         </plugins>
     </build>

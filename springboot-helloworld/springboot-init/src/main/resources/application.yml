@@ -8,6 +8,7 @@ spring:
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
+
   druid:
     initial-size: 5
     min-idle: 5
@@ -56,7 +57,7 @@ spring:
     view:
       prefix: /templates
       suffix: .html
-    static-path-pattern: /static/**
+
 
 mybatis:
   type-aliases-package: com.mh.pojo
