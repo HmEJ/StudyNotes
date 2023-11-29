@@ -121,7 +121,7 @@ public non-sealed class Dog extends Animal{ }
 
 ## 4. Record类
 
-类似lombok的 **属性只读 **对象
+类似lombok的 **属性只读** 对象
 
 1. 具体的使用方法就是使用record关键字修饰一个类，这个类就是`Record`类
 
