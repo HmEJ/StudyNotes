@@ -157,6 +157,10 @@ systemctl enable docker ：开机自启docker服务
 
 # 3、docker的常用操作
 
+## 0. 查看容器状态
+
+`docker inspect <容器id/容器name>`
+
 ## 1、查看本地【镜像】
 
 docker images ：查看docker镜像
