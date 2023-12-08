@@ -1,4 +1,5 @@
 # Swagger
+<details>
 
 ## 简介
 
@@ -184,3 +185,8 @@ public class User {
 访问 `/swagger-ui.html` 地址 ， 即可查看接口文档
 
 ![](img/img1.png)
+
+</details>
+
+# Knife4J
+https://doc.xiaominfo.com/docs/quick-start#openapi2
