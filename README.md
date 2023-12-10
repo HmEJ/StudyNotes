@@ -60,20 +60,19 @@
 
 ## 框架
 
-1. [👉Maven逆向工程自动生成MyBatis骨架](Java/mybatis-generator.md)
-2. [👉Spring学习记录|最后一天|完全体|10-6](SpringPractice10-6/学习记录10-6.md)
-3. [👉SpringMVC学习记录|第一天|HelloWord阶段|10-7](SpringMVC/SpringMVC学习记录10-7.md)
-4. [👉SpringMVC学习记录|第二天|10-8](SpringMVC02/SpringMVC学习记录第二天10-8.md)
-5. [👉SpringMVC 10-11|10-12](SpringMVC03/SpringMVC02/SpringMVC45%2010-1112.md)
+1. [👉MyBatis 逆向工程](Java/mybatis-generator.md)
+2. [👉Spring AOP|声明式事务](SpringPractice10-6/学习记录10-6.md)
+3. [👉SpringMVC 了解MVC|核心组件|控制流程](SpringMVC/SpringMVC学习记录10-7.md)
+4. [👉SpringMVC 组件配置](SpringMVC02/SpringMVC学习记录第二天10-8.md)
+5. [👉SpringMVC 异步通信|上传与下载](SpringMVC03/SpringMVC02/SpringMVC45%2010-1112.md)
 6. [👉SSM整合](ssm-integration/记录.md)
-7. [👉maven聚合方式整合SSM](web-aggregation/记录.md)
-8. [👉springboot整合 | 三期项目准备阶段](springboot-jsoft03/记录.md)
-9. [👉springboot学习记录](springboot-helloworld/学习记录.md)
-10. [👉MyBatis-Plus笔记](mybatis-plus/mp-demo/MyBatis-Plus笔记.md)
+7. [👉SSM整合 聚合式](web-aggregation/记录.md)
+8. [👉springboot](springboot-helloworld/学习记录.md)
+9.  [👉MyBatis-Plus](mybatis-plus/mp-demo/MyBatis-Plus笔记.md)
 
 ## 设计模式
 
-[设计模式](design_pattern/设计模式.md)
+[👉设计模式](design_pattern/设计模式.md)
 
 ---
 
