@@ -8,27 +8,22 @@
 <a href="https://www.douyin.com/user/MS4wLjABAAAAtanaGDoe_VRcpfRVAsEoYSTvSf4AnjXw2qPgWDvaosw"><img alt="Static Badge" src="https://img.shields.io/badge/%E6%8A%96%E9%9F%B3-%E9%97%9C%E6%B3%A8%E6%88%91-brightgreen?logo=tiktok">
 </a>
 
-👋hi，你找到啦，就是这里，这是一个从myGithub中拆分出来的新的仓库，维护着我最新的学习记录😁
-
----
-
-## 其他
 
 1. [docker](docker/docker.md)
-2. [linux上clash的配置](Java/clash配置.md)
-3. [swagger笔记](swagger-demo/swagger笔记.md)
+2. [clash-linux-config](Java/clash配置.md)
+3. [swagger](swagger-demo/swagger笔记.md)
 
 ## 笔记
 
 ![温馨提示](img/Snipaste_2023-09-02_15-52-55.png)
 
 
-1. [👉重要知识点汇总📕](Java/🌟重要知识点汇总.md)
+1. [👉Knowledge📕](Java/🌟重要知识点汇总.md)
 2. [👉Git📖](Java/Git.md)
 3. [👉JVM📖](Java/JVM组成.md)
 4. [👉MySql](Java/SQL数据库.md)
-5. [👉JDK17常用新特性](Java/JDK17常用新特性.md)
-6. [👉面试知识点(自我总结版)](面试知识点/面试知识点.md)
+5. [👉JDK17](Java/JDK17常用新特性.md)
+6. [👉Interview](面试知识点/面试知识点.md)
 
 <details>
 <summary>Obsidian笔记</summary>
@@ -69,23 +64,21 @@
 
 ## 设计模式
 
-[👉设计模式](design_pattern/设计模式.md)
+1. [👉设计模式](design_pattern/设计模式.md)
 
 ---
 
 ## 测试题
 
-1. [👉数组测验💯](面试简单题测试.md)
-2. [👉异常和常用类测验💯](模拟测试摸底题.md)
-3. [👉集合测验💯](集合中难测试题.md)
-4. [👉IO流测验💯](IO流简单测试题.md)
-5. [👉线程测验💯](线程简单测试题.md)
-6. [👉SQL测验💯](SQL简单测试题.md)
-    附: 💾[sql文件](tb_order.sql)
+1. [👉数组💯](Java/面试简单题测试.md)
+2. [👉异常和常用类💯](Java/模拟测试摸底题.md)
+3. [👉集合💯](Java/集合中难测试题.md)
+4. [👉IO流💯](Java/IO流简单测试题.md)
+5. [👉线程💯](Java/线程简单测试题.md)
+6. [👉SQL💯](Java/SQL简单测试题.md)
+    附: 💾[sql文件](Java/tb_order.sql)
 ---
 
 ## 感谢
-
-我的组长对我的学习提供了很大帮助，特此感谢！
-
-关注我的组长：👉<a href="https://github.com/Jinhui-Huang"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3DJinhui-Huang&query=%24.data.totalSubs&suffix=%20followers&logo=github&label=Jinhui-Huang&labelColor=0996AD&color=0786BC)"></a>👈
+感谢`Jinhui-Huang`大佬对我学习提供的帮助
+👉<a href="https://github.com/Jinhui-Huang"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3DJinhui-Huang&query=%24.data.totalSubs&suffix=%20followers&logo=github&label=Jinhui-Huang&labelColor=0996AD&color=0786BC)"></a>
