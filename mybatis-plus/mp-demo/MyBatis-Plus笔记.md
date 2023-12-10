@@ -1,4 +1,25 @@
+小 tips：
+
+> 依赖注入的方式：
+>
+> 有时候我们使用`@AutoWired`注解进行依赖注入时，会有黄色波浪线提示，`spring`不希望我们通过这种方式进行依赖注入。更推荐通过构造器来注入。但是使用构造器注入很麻烦，所以我们可以借助`lombok`的`@RequiredArgsConstructor`注解帮忙实现依赖注入。该注解作用是只生成含有必要字段的构造器。我们加上这个注解后，定义成员变量时，加上`final`关键字修饰后，该字段就会被自动注入`spring`容器中。对于不想注入的字段，不加`final`修饰即可。
+>
+> 因为final修饰的字段表示为一个常量，必须被初始化。我们不在一开始定义的时候初始化他，那么他就会在构造器中被初始化。所以借助`@RequiredArgsConstructor`这个注解，我们能更优雅地实现依赖注入。
+
+```java
+@RequiredArgsConstructor //只生成含有必要参数的构造器
+public class CartServiceImpl extends ServiceImpl<CartMapper, Cart> implements ICartService {
+    private final RestTemplate restTemplate; //相当于构造器注入
+    // ... 业务代码
+}
+```
+
+
+
+---
+
 # 使用mp
+
 ## 1. 引入mp起步依赖
 其中继承了mybatis和mybatisplus的所有功能，并且实现了自动装配，因此使用mp的starter代替mybatis的starter
 ```xml
