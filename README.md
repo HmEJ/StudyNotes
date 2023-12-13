@@ -30,10 +30,10 @@
 
 1. [👉HTML基础📖](java/1-HTML基础.md)
 8. [👉CSS📖](java/2-CSS.md)
-9.  [👉javaScript📖](java/javaScript.md)
+9.  [👉JavaScript📖](java/JavaScript.md)
 10. [👉Ajax📖](java/Ajax.md)
 11. [👉VUE📖](java/VUE.md)
-6. [👉jAVA入门📖](java/3-java%20SE%20入门.md)
+6. [👉JAVA入门📖](java/3-java%20SE%20入门.md)
 7. [👉方法📖](java/4-方法.md)
 8. [👉数组📖](java/5-数组.md)
 9. [👉面向对象📖](java/6-面向对象.md)
@@ -44,8 +44,8 @@
 14. [👉多线程📖](java/11-多线程.md)
 15. [👉网络编程📖](java/12-网络编程.md)
 16. [👉反射📖](java/13-反射.md)
-17. [👉jDBC📖](java/14-jDBC.md)
-13. [👉javaWeb📖](java/javaWeb.md)
+17. [👉JDBC📖](java/14-JDBC.md)
+13. [👉JavaWeb📖](java/JavaWeb.md)
 </details>
 
 ---
