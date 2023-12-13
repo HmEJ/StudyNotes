@@ -112,8 +112,8 @@
 
 点击 mybatis-generator:generate
 
-![Alt text](img/Snipaste_2023-10-07_11-09-55.png)
+![Alt text](/img/Snipaste_2023-10-07_11-09-55.png)
 
 生成的文件如下：
 
-![Alt text](img/Snipaste_2023-10-07_11-11-37.png)
+![Alt text](/img/Snipaste_2023-10-07_11-11-37.png)

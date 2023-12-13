@@ -4,15 +4,15 @@
 Ajax：只刷新局部页面的技术
 
 
-![](img/Snipaste_2023-09-04_10-25-12.png)
+![](/img/Snipaste_2023-09-04_10-25-12.png)
 
 XMLHttpRequest常用属性:
 
-![](img/Snipaste_2023-09-04_17-59-15.png)
+![](/img/Snipaste_2023-09-04_17-59-15.png)
 
 常用方法：
 
-![](img/Snipaste_2023-09-04_17-59-33.png)
+![](/img/Snipaste_2023-09-04_17-59-33.png)
 
 原生ajax使用步骤：
 1. 创建异步引擎对象

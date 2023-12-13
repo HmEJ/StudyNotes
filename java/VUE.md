@@ -248,7 +248,7 @@ export default {
 ```
 ### vue条件渲染 v-if/v-show
 
-![Alt text](img/Snipaste_2023-09-06_17-59-14.png)
+![Alt text](/img/Snipaste_2023-09-06_17-59-14.png)
 
 ```vue
 <template>
@@ -503,10 +503,10 @@ export default {
 
 ### vue路由配置
 前端路由：说白了就是通过不同的url，来访问不同的页面 这就是前端路由的概念。
-![Alt text](img/Snipaste_2023-09-06_20-06-01.png)
+![Alt text](/img/Snipaste_2023-09-06_20-06-01.png)
 
 首先前往main.js中进行路由配置。vue3.x 和 vue2.x稍有不同：
-![Alt text](img/Snipaste_2023-09-06_20-11-22.png)
+![Alt text](/img/Snipaste_2023-09-06_20-11-22.png)
 
 ```js
 import Vue from 'vue'

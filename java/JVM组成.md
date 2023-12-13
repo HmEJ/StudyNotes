@@ -1,6 +1,6 @@
 [JVM底层原理看这一篇就够了，带你彻底搞懂JVM底层原理 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/609717252)
 
-![Alt text](img/JVM%E7%BB%84%E6%88%90.png)
+![Alt text](/img/JVM%E7%BB%84%E6%88%90.png)
 ### 程序计数器（寄存器）Program Counter Register
 作用：
 	记住下一条指令 (二进制字节码文件) 的执行地址
@@ -42,7 +42,7 @@ Q&A:
 	`-Xmx size `可以指定JVM堆空间大小。
 
 ### 方法区 Method Area
-![Alt text](img/%E6%96%B9%E6%B3%95%E5%8C%BA%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.png)
+![Alt text](/img/%E6%96%B9%E6%B3%95%E5%8C%BA%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.png)
 - 方法区是线程共享的
 - 方法区存储类的数据
 **运行时常量池(Runtime Constant Pool)**
@@ -167,16 +167,16 @@ GC常用算法有：**标记-清除算法**，**标记-压缩算法**，**复制
 具体过程：**新生代(Young)分为*Eden区，From区(幸存者0区)与To区(幸存者1区)***
 
 当系统创建一个对象的时候，总是在Eden区操作，当这个区满了，那么就会触发一次minorGC，也就是*年轻代的垃圾回收*。一般来说这时候不是所有的对象都没用了，所以就会把还能用的对象复制到From区。
-![Alt text](img/Snipaste_2023-09-05_22-37-31.png)
+![Alt text](/img/Snipaste_2023-09-05_22-37-31.png)
 
 这样整个Eden区就被清理干净了，可以继续创建新的对象，当Eden区再次被用完，就再触发一次minorGC，然后呢，注意，这个时候跟刚才稍稍有点区别。这次触发minorGC后，_会将Eden区与From区还在被使用的对象复制到To区_，
-![Alt text](img/Snipaste_2023-09-05_22-38-38.png)
+![Alt text](/img/Snipaste_2023-09-05_22-38-38.png)
 
 再下一次minorGC的时候，则是将*Eden区与To区中的还在被使用的对象复制到From区*。
-![Alt text](img/Snipaste_2023-09-05_22-39-35.png)
+![Alt text](/img/Snipaste_2023-09-05_22-39-35.png)
 
 经过若干次minorGC后，仍然存活的对象会被复制到老年代中。
-![Alt text](img/Snipaste_2023-09-05_22-40-15.png)
+![Alt text](/img/Snipaste_2023-09-05_22-40-15.png)
 
 老年代空间满后会进行一个fullGC。这个过程是非常耗时且消耗资源的。如果频繁使用fullGC无疑会对系统性能产生很大的影响。因此要合理分配年轻代和老年代的空间，减少不必要的fullGC操作。
 

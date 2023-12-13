@@ -27,4 +27,4 @@
 	DAO层规定了我们对数据库应该有哪些行为
 
 ***每层都写什么？***
-![Alt text](img/Dao.png)
+![Alt text](/img/Dao.png)
