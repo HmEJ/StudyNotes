@@ -395,6 +395,14 @@ docker run --name tsb -p 8898:8898 -d testspringboot
 
 ---
 
+> tips :
+>
+> 配置命令别名：超级用户编辑 /root/.bashrc 文件 
+>
+>  `alias ll = 'ls $LS_OPTIONS$ -l'`   
+>
+> `alias dps = 'docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names}}"'`
+
 
 
 # 容器网络互联
