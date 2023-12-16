@@ -356,11 +356,17 @@ docker run --name mmy -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d \
 
 创建一个文件名为Dockerfile的文件，这个文件是没有后缀名的
 
-FROM openjdk:8
-ADD t-springboot-1.0-SNAPSHOT-exec.jar /app.jar
-RUN bash -c 'touch /app.jar'
-ENTRYPOINT ["java","-jar","/app.jar"]
-RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
+```dockerfile
+# 基础镜像
+FROM openjdk:11.0-jre-buster
+# 设定时区
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+# 拷贝jar包
+COPY hm-service.jar /app.jar
+# 入口
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+```
 
 ### 2、上传jar
 
@@ -425,12 +431,54 @@ docker run --name tsb -p 8898:8898 -d testspringboot
 
 在正式的项目部署中，数据库的端口一般不会对外暴露，所以我们只能在docker内部进行访问，这样的话Java的数据库配置就要改变。
 
-1. 在yaml配置文件中修改host参数即可。
+1. 在yaml配置文件中修改host参数为容器名称即可。
 
 2. 打包jar包
+
 3. 配置Dockerfile
+
+   dockerfile常见指令：
+
+   ![](img/2023-12-15_23-51.png)
+
+   更加详细指令参考[官方文档](https://docs.docker.com/engine/reference/builder/)
+
+   ```dockerfile
+   # 基础镜像
+   FROM openjdk:11.0-jre-buster
+   # 设定时区
+   ENV TZ=Asia/Shanghai
+   RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+   # 拷贝jar包
+   COPY hm-service.jar /app.jar
+   # 入口
+   ENTRYPOINT ["java", "-jar", "/app.jar"]
+   ```
+
 4. 构建镜像
+
+   `-t`  （tag） :表示镜像名称
+
+   `.`   : 表示docker构建的上下文路径，这是docker查找`dockerfile`的依据    `.` 表示当前目录
+
+   ```bash
+   docker build -t <镜像名> . 
+   ```
+
 5. Docker run部署应用
+
+## 前端部署
+
+拉取nginx对象，创建容器，注意挂载卷映射路径。
+
+还需要注意一点，配置文件中`proxy_pass` 后面跟的url中的host名应该为容器名，这样就可以容器间通信。
+
+```conf
+location /api {
+    rewrite /api/(.*)  /$1 break;
+    proxy_pass http://hm-test:8080;  
+}
+```
 
 ## DockerCompose
 
@@ -444,7 +492,7 @@ version: "3.8"
 services:
   mysql:                # 数据库服务
     image: mysql
-    container_name: mysql
+    container_name: mysql  # 容器名
     ports:
       - "3306:3306"
     environment:
@@ -482,9 +530,11 @@ services:
       - hm-net
 networks:               # 网络配置
   hm-net:
-    name: hmall
+    name: hmall  
 ```
 
 
 
-配置完成后 使用 `docker compose` 命令进行部署
+将前端服务，后端服务的jar包，以及dockfile放到同一目录的下
+
+配置完成后 使用 `docker compose` 命令进行部署  

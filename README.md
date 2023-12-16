@@ -61,6 +61,7 @@
 7. [👉SSM整合 聚合式](framework/web-aggregation/记录.md)
 8. [👉springboot](framework/springboot-helloworld/学习记录.md)
 9.  [👉MyBatis-Plus](framework/mybatis-plus/mp-demo/MyBatis-Plus笔记.md)
+10. [👉SpringCloud](framework/SpringCloud/springcloud笔记.md)
 
 ## 设计模式
 
