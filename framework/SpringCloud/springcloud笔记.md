@@ -626,7 +626,7 @@ spring提供33种路由过滤器
 
 4. **定义bean**
 
-   - `AuthProperties 获取auth配置信息（放行路径）[click](hmall/hm-gateway/src/main/java/com/hmall/gateway/config/AuthProperties.java)
+   - `AuthProperties` 获取auth配置信息（放行路径）[click](hmall/hm-gateway/src/main/java/com/hmall/gateway/config/AuthProperties.java)
    - `JwtProperties` 获取jwt配置信息 [click](hmall/hm-gateway/src/main/java/com/hmall/gateway/config/JwtProperties.java)
    - `SecurityConfig` 自动装配工具 [click](hmall/hm-gateway/src/main/java/com/hmall/gateway/config/SecurityConfig.java)
    - `JwtTool` JWT工具，包含生成和解析`token`的功能 [click](hmall/hm-gateway/src/main/java/com/hmall/gateway/util/JwtTool.java) 
@@ -757,7 +757,7 @@ spring提供33种路由过滤器
    }
    ```
 
-4. 之前学过[springboot自动装配原理]()，我们还得在spring.properties中加上这个拦截器，spring才能帮我们自动装配
+4. 之前学过[springboot自动装配原理](/framework/springboot-helloworld/学习记录.md#enableautoconfiguration注解)，我们还得在spring.properties中加上这个拦截器，spring才能帮我们自动装配
 
    ```properties
    org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
@@ -766,7 +766,7 @@ spring提供33种路由过滤器
      com.hmall.common.config.MvcConfig 
    ```
 
-5. 启动服务，发现报错，因为我们包括网关在内的所有微服务都依赖于这个通用模块，然后其他的微服务有springmvc的依赖，而网关是没有springmvc的依赖的，因此我们的springmvc拦截器对网关来说就无法注入。所以报错。还是涉及到[springboot自动装配原理]()，我们使用`@ConditionalOnClass`注解来配置拦截器的生效范围
+5. 启动服务，发现报错，因为我们包括网关在内的所有微服务都依赖于这个通用模块，然后其他的微服务有springmvc的依赖，而网关是没有springmvc的依赖的，因此我们的springmvc拦截器对网关来说就无法注入。所以报错。还是涉及到[springboot自动装配原理](/framework/springboot-helloworld/学习记录.md#condition)，我们使用`@ConditionalOnClass`注解来配置拦截器的生效范围
 
    ```java
    @Configuration
