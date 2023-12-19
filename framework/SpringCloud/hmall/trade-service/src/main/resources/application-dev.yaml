@@ -1,4 +1,4 @@
 hm:
   db:
-    host: mysql
+    host: mysql-hm
     pw: 123

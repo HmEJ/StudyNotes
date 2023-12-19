@@ -102,7 +102,7 @@ Spring提供一个`RestTemplate`工具，可以实现Http请求的发送。
    );
    ```
 
-# 服务治理🌟
+# 服务治理(Nacos)🌟
 
 ## 注册中心
 
@@ -335,7 +335,7 @@ OpenFeign的日志只有在项目的日志级别为debug级别时才会生效。
    ```
 
 
-# 网关
+# 网关🌟
 
 网关负责请求的路由，转发和身份校验等
 
@@ -832,3 +832,460 @@ public class DefaultFeignConfig {
 >
 > > 就这样，springmvc拦截器和feign拦截器相互配合，让大家都能获取到用户信息。🥳
 
+# 配置管理(Nacos)🌟
+
+## 配置共享
+
+### 1. 添加配置到nacos
+
+添加一些共享配置到nacos中，包括：jdbc,  mp, 日志, swagger, openfeign等配置
+
+![](img/2023-12-16_18-51.png)
+
+### 2. 拉取共享配置
+
+基于NacosConfig拉取共享配置代替微服务本地配置，首先需要了解springcloud项目启动流程：
+
+![](img/2023-12-16_18-57.png)
+
+1. 引入依赖
+
+   ```xml
+   <!--nacos配置管理-->
+   <dependency>
+       <groupId>com.alibaba.cloud</groupId>
+       <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+   </dependency>
+   <!--读取bootstrap文件-->
+   <dependency>
+       <groupId>org.springframework.cloud</groupId>
+       <artifactId>spring-cloud-starter-bootstrap</artifactId>
+   </dependency>
+   ```
+
+2. 新建bootstrap.yaml
+
+   ```yaml
+   spring:
+     application:
+       name: cart-service  #微服务名称
+     profiles:
+       active: dev
+     cloud:
+       nacos:
+         server-addr: 192.168.1.121:8848   # nacos地址
+         config:
+           file-extension: yaml       # 文件拓展名，我们在配置中心设置的是 xxx.yaml
+           shared-configs:          # 共享的配置
+             - data-id: shared-jdbc.yaml
+             - data-id: shared-log.yaml
+             - data-id: shared-swagger.yaml
+   ```
+
+这样配置以后，再次启动项目，就发现项目能从nacos中拉取共享配置了，我们只需要简单对项目进行一些定制的配置就好了
+
+## 配置热更新
+
+前提条件：
+
+1. nacos中要有一个与微服务名有关的配置文件
+
+   `[spring.application.name]-[spring.active.profile].[file-extension]`
+
+   `微服务名称-激活的profile.文件拓展名`
+
+2. 微服务中要以特定方式读取需要热更新的配置属性，并运用 到业务代码中
+
+   有两种方式实现：
+
+   ```java
+   ✅
+   @Data
+   @ConfigurationProperties(prefix="hm.cart")
+   public class CartProperties{
+   	private int maxItems;
+   }
+   ```
+
+   ```java
+   ❎
+   @Data
+   @RefreshScope
+   public class CartProperties{
+       @Value(${hm.cart.maxItems})
+       private int maxItems;
+   }
+   ```
+
+3. 然后在nacos更改配置文件中的配置项，可以实现无需重启服务的热更新。
+
+# 服务保护和分布式事务🌟
+
+雪崩问题：微服务调用链路中的某个服务故障，导致所有微服务都不可用，造成雪崩问题。解决雪崩问题就需要服务降级。
+
+## 服务降级方案
+
+### 请求限流
+
+限制访问接口的请求的并发量，避免服务因流量激增出现故障
+
+![](img/2023-12-17_17-24.png)
+
+### 线程隔离
+
+通过**限定每个业务能使用的线程数量**而将故障业务隔离，避免故障扩散
+
+### 服务熔断
+
+由断路器统计请求的异常比例或慢调用比例，如果超出阈值则会熔断该业务，拦截该接口的请求。
+
+熔断期间，所有请求快速失败，都走fallback逻辑
+
+## 服务降级技术
+
+|          |            Sentinel  (alibaba)            | Hystrix  (netflix)          |
+| -------- | :---------------------------------------: | --------------------------- |
+| 线程隔离 |                信号量隔离                 | 线程池隔离/信号量隔离       |
+| 熔断策略 |         基于慢调用比例或异常比例          | 基于异常比例                |
+| 限流     |           基于QPS, 支持流量整形           | 有限的支持                  |
+| Fallback |                   支持                    | 支持                        |
+| 控制台   | 开箱即用,可配置规则,查看秒级监控,机器发现 | 不完善                      |
+| 配置方式 |           基于控制台,重启后失效           | 基于注解或配置文件,永久生效 |
+
+### Sentinel
+
+[sentinel](https://sentinelguard.io/zh-cn/docs/quick-start.html)是alibaba开源的一款微服务流量控制组件
+
+#### 部署
+
+##### 1. 安装控制台
+
+- 下载[控制台jar包](https://github.com/alibaba/Sentinel/releases)
+
+- 下载完成后使用`java -jar`命令启动控制台，或者将jar打包为docker镜像，这样更方便 启动。
+
+  ```bash
+  java -Dserver.port=8090 -Dcsp.sentinel.dashboard.server=localhost:8090 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard.jar
+  ```
+
+​	其他启动时可配置参数参考[官方文档](https://github.com/alibaba/Sentinel/wiki/%E5%90%AF%E5%8A%A8%E9%85%8D%E7%BD%AE%E9%A1%B9)
+
+- 一切配置完成后，我们访问配置中设置的ip地址即可进入控制台
+
+##### 2. 微服务整合
+
+1. 引入sentinel依赖
+
+   ```xml
+   <!--sentinel-->
+   <dependency>
+       <groupId>com.alibaba.cloud</groupId>
+       <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+   </dependency>
+   ```
+
+2. 配置控制台
+
+   ```yaml
+   spring:
+     cloud:
+       sentinel:
+         transport:
+           dashboard: localhost:8091 #控制台地址
+   ```
+
+#### 簇点链路
+
+簇点链路就是单机调用链路。是一次请求进入服务后经过的每一个被Sentinel监控的而资源链。默认Sentinel会监控SpinrgMVC的每一个EndPoint(http接口)。限流，熔断等都是针对簇点链路中的资源设置的。而资源名默认就是接口的请求路径。
+
+![](img/2023-12-17_18-57.png)
+
+Restful风格的接口请求路径一般都相同，这会导致簇点资源名重复。因此，我们修改配置，把**请求方式+请求路径**的作为簇点资源名称。
+
+```yaml
+spring:
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8091 #控制台地址
+      http-method-specify: true  # http方法详情
+```
+
+#### 请求限流
+
+在sentinel控制台，对簇点链路进行流控
+
+点击流控按钮，进行相关配置即可限流
+
+![](img/2023-12-17_20-23.png)
+
+#### 线程隔离
+
+线程隔离就是基于并发线程数进行限流
+
+1. 让openfeign整合sentinel
+
+   ```yaml
+   feign:
+   	sentinel:
+   		enabled: true #开启feign对sentinel的整合
+   ```
+
+2. 这样sentinel控制台就能看到被监控的feign客户端
+
+   ![](img/2023-12-17_20-32.png)
+
+3. 我们基于线程数对这个调用进行流控，就达到了隔离的目的
+
+   ![](img/2023-12-17_20-33.png)
+
+#### Fallback
+
+feignclient的fallback有两种配置方式：
+
+- `FallbackClass` ,  无法对远程调用的异常处理 ❎
+- `FallbackFactory` , 可以对远程调用的异常处理 ✅
+
+1. 自定义类，实现`FallbackFactory`，写对某个feignclient的falllback逻辑
+
+   ```java
+   @Slf4j
+   public class ItemClientFallbackFactory implements FallbackFactory<ItemClient> {
+       @Override
+       public ItemClient create(Throwable cause) {
+           return new ItemClient() {
+               @Override
+               public List<ItemDTO> queryItemByIds(Collection<Long> ids) {
+                   log.error("查询商品异常, 异常原因：",cause);   //fallback逻辑
+                   return Collections.emptyList();
+               }
+               @Override
+               public void deductStock(List<OrderDetailDTO> items) {
+                   throw new RuntimeException(cause);  
+               }
+           };
+       }
+   }
+   ```
+
+2. 将定义的fallbackfactory在配置类中定义为bean
+
+   ```java
+   @Bean
+   public ItemClientFallbackFactory itemClientFallbackFactory(){
+       return new ItemClientFallbackFactory();
+   }
+   ```
+
+3. 在对应feignclient上添加fallbackFactory属性
+
+   ```java
+   @FeignClient(value = "item-service",fallbackFactory = ItemClientFallbackFactory.class)
+   public interface ItemClient {
+       @GetMapping("/items")
+       List<ItemDTO> queryItemByIds(@RequestParam("ids") Collection<Long> ids);
+   
+       @PutMapping("/items/stock/deduct")
+       void deductStock(List<OrderDetailDTO> items);
+   }
+   ```
+
+#### 服务熔断
+
+断路器工作原理：
+
+![](img/2023-12-17_21-35.png)
+
+在sentinel控制台配置簇点链路的熔断规则即可。
+
+![](img/2023-12-17_21-37.png)
+
+熔断规则解释：
+
+- 最大RT  (response time)：最大响应时间，超过这个时间将配合其他熔断条件进行熔断
+- 比例阈值：达到熔断条件的请求比例
+- 最小请求数：设为5, 比例设为0.5, 就表示5个请求中有一半以上，响应时间超过设定值，就会触发熔断
+
+- 统计时长： 条件统计的时间，1s就是每秒统计一次。
+
+#### Sentinel持久化
+
+- 掏钱，使用付费版本  ❎
+- 白嫖，将配置文件放到nacos中  ✅
+
+[动态规则扩展](https://github.com/alibaba/Sentinel/wiki/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%99%E6%89%A9%E5%B1%95)
+
+1. 引入nacos-sentinel依赖
+
+   ```xml
+   <dependency>
+       <groupId>com.alibaba.csp</groupId>
+       <artifactId>sentinel-datasource-nacos</artifactId>
+       <version>x.y.z</version>
+   </dependency>
+   ```
+
+2. 在nacos配置服务降级策略
+
+   ![](img/2023-12-17_22-25.png)
+
+   ```yaml
+   [
+       {
+           "resource":"GET:http://item-service/items",
+           "count": 200.0,
+           "grade": 0,
+           "slowRatioThreshold": 0.5,
+           "timeWindow": 10
+       }
+   ]
+   ```
+
+3. 拉取配置
+
+   在yaml中配置
+
+   ![](img/2023-12-17_22-28.png)
+
+   ```yaml
+     datasource:
+       ds1:  #配置文件的数据源名称
+         nacos:
+           server-addr: 192.168.1.123:8848 #nacos地址
+           data-id: degrade.json 
+           group-id: DEFAULT_GROUP
+           data-type: json
+           rule-type: degrade
+   ```
+
+## 分布式事务
+
+在分布式系统中，如果一个业务需要多个服务合作完成，而且每一个服务都有事务，多个事务必须 同时成功或失败，这样的事务就是**分布式事务**，其中的每个服务的事务就是一个**分支事务**。整个业务成为**全局事务**。
+
+### Seata
+
+[Seata](https://seata.io/zh-cn/docs/user/quickstart/)是alibaba开源的分布式事务解决方案。
+
+Seata事务管理中的三个角色：
+
+- TC ( Transaction Coordinator) 维护全局和分支事务的状态，协调全局事务提交或回滚
+- TM ( Transaction Manager) 定义全局事务的范围，开始全局事务，提交或回滚全局事务
+- RM ( Resource Manager) 管理分支事务，与TC交谈以注册分支事务和报告分支事务的状态
+
+![](img/2023-12-18_11-29.png)
+
+### 部署TC服务
+
+1. 准备[数据库表](resources/seata-tc.sql)
+
+   Seata支持多种存储模式，考虑到持久化的需要，一般采用基于数据库的存储。
+
+2. 准备[配置文件](resources/seata/application.yml)
+
+3. docker部署
+
+   ```bash
+   docker run --name seata -p 8099:8099 -p 7099:7099 -e SEATA_IP=192.168.1.123 -v ./seata/logs/seata:/root/logs/seata  -v ./seata:/seata-server/resources --privileged=true --network=hm-net -d seataio/seata-server:1.5.2
+   ```
+
+   > 部署到docker里的seata本身也是个springboot项目
+   >
+   > 要注意seata服务的版本和spirngboot的版本对应
+
+### 微服务集成seata
+
+1. 引入依赖
+
+   ```xml
+   <!--seata-->
+   <dependency>
+     <groupId>com.alibaba.cloud</groupId>
+     <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+   </dependency>
+   ```
+
+2. 在yaml中添加配置，让微服务找到tc服务地址
+
+   这一步应该配置到nacos的共享配置中，然后在需要启用事务的微服务中使用bootstrap.yaml来拉取服务。
+
+   ```yaml
+   seata:
+     registry: # TC服务注册中心的配置，微服务根据这些信息去注册中心获取tc服务地址
+       type: nacos # 注册中心类型 nacos
+       nacos:
+         server-addr: 192.168.150.101:8848 # nacos地址
+         namespace: "" # namespace，默认为空,起数据隔离作用
+         group: DEFAULT_GROUP # 分组，默认是DEFAULT_GROUP
+         application: seata-server # seata服务名称
+         username: nacos
+         password: nacos
+     tx-service-group: hmall # 事务组名称
+     service:
+       vgroup-mapping: # 事务组与tc集群的映射关系
+         hmall: "default"
+   ```
+
+
+3. 参与事务的微服务引入seata的依赖，并且在bootstrap.yaml中拉取seata的共享配置这样就好了。
+
+### XA模式
+
+XA规范是 X/Open组织定义的分布式事务处理标准(DTP ,distributed transcation processing) 
+
+XA模式工作原理：
+
+![](img/2023-12-19_00-39.png)
+
+- 可以保证事务的强一致性，很安全
+- 但是缺点就是速度慢，某些场景下可能效率较低
+
+#### 实现
+
+seata的starter已经完成了xa模式的自动装配，因此我们想要使用只需要在yaml里配置一下就好了
+
+1. 配置yaml
+
+   ```yaml
+   seata:
+   	data-source-proxy-mode: XA #开启数据源代理了的XA模式
+   ```
+
+2. 给全局事务的入口方法添加`@GlobalTranscational`注解
+
+   ```java
+   @Override
+   @GlobalTransactional  //seata提供的注解
+   public Long createOrder(OrderFormDTO orderFormDTO) {
+   	//业务逻辑...
+   }
+   ```
+
+3. 其他的事务还得加上 spring的事务注解`@Transcational`
+
+### AT模式
+
+是Seata主推的模式 (默认模式) ，同样是分阶段提交的事务模型，弥补了XA模型中资源锁定周期过长的缺陷。
+
+AT模式工作原理：
+
+![](img/2023-12-19_15-38.png)
+
+- 向比于XA，性能不错
+- 会出现短暂数据不一致的情况，能保证最终一致
+
+#### 实现
+
+1. 准备undo_log[数据表](resources/seata-at.sql)
+
+   每一个相关的微服务都应该有一个自己的回滚日志表
+
+   ![](img/2023-12-19_15-56.png)
+
+2. 配置yaml设置事务模式为at模式(默认模式，删掉也行)
+
+   ```yaml
+   seata:
+   	data-source-proxy-mode: AT #开启数据源代理了的AT模式
+   ```
+
+3. 剩下的就和XA模式一样，在事务入口加注解(`@GlobalTranscational`)，在其他事务方法上加注解(`@Transcational`)。
