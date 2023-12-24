@@ -12,6 +12,7 @@
 1. [docker](framework/docker/docker.md)
 2. [clash-linux-config](java/clash配置.md)
 3. [swagger](framework/swagger-demo/swagger笔记.md)
+4. [短信服务和邮箱服务的使用方法记录](framework/email-demo/记录.md)
 
 ## 笔记
 
