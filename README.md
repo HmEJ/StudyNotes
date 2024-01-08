@@ -63,6 +63,7 @@
 8. [👉springboot](framework/springboot-helloworld/学习记录.md)
 9.  [👉MyBatis-Plus](framework/mybatis-plus/mp-demo/MyBatis-Plus笔记.md)
 10. [👉SpringCloud](framework/SpringCloud/springcloud笔记.md)
+11. [👉RabbitMQ](framework/mq-study/MQ.md)
 
 ## 设计模式
 
