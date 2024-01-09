@@ -410,6 +410,8 @@ docker run --name tsb -p 8898:8898 -d testspringboot
 > `alias dps = 'docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names}}"'`
 
 
+> docker安装：https://docker-practice.github.io/zh-cn/install/debian.html
+
 
 # 容器网络互联
 
