@@ -413,6 +413,20 @@ docker run --name tsb -p 8898:8898 -d testspringboot
 > docker安装：https://docker-practice.github.io/zh-cn/install/debian.html
 > 
 > docker高版本更改数据存储位置: https://www.cnblogs.com/chentiao/p/17409226.html
+>
+
+创建mysql容器：
+```bash
+docker run \
+--name mysql-es \
+-d \
+-p 3306:3306 \
+-v /home/joneelmo/docker/mysql-es/log:/var/log/mysql \
+-v /home/joneelmo/docker/mysql-es/data:/var/lib/mysql \
+-v /home/joneelmo/docker/mysql-es/conf:/etc/mysql/conf.d \
+-e MYSQL_ROOT_PASSWORD=root \
+mysql
+```
 
 # 容器网络互联
 
