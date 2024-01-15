@@ -414,6 +414,17 @@ docker run --name tsb -p 8898:8898 -d testspringboot
 > 
 > docker高版本更改数据存储位置: https://www.cnblogs.com/chentiao/p/17409226.html
 >
+> 修改/添加docker源： 修改/etc/docker/daemon.json文件，添加镜像站:
+> 
+```json
+{
+    "registry-mirrors": [     //配置源
+      "https://hub-mirror.c.163.com",
+      "https://mirror.baidubce.com"
+    ],
+    "data-root": "/home/docker/docker_data"   //自定义docker数据存储位置
+  }
+```
 
 创建mysql容器：
 ```bash
