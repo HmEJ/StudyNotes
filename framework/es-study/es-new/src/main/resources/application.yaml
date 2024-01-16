@@ -1,0 +1,23 @@
+server:
+  port: 8089
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_es
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  rabbitmq:
+    host: 192.168.1.137
+    port: 5672
+    username: mq
+    password: mq
+    virtual-host: /
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.jm.esnew.pojo
+logging:
+  level:
+    com.jm: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
