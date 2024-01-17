@@ -1,12 +1,6 @@
 
 # 学习笔记
 
-<a href="https://www.instagram.com/j.elmo/"><img alt="Static Badge" src="https://img.shields.io/badge/nothing-fllowme-brightgreen?logo=instagram&logoColor=ffffff&label=j.elmo">
-</a>
-<a href="https://www.youtube.com/channel/UC7Qfl9xgFGr3hT3zRXqAeEA"><img alt="Static Badge" src="https://img.shields.io/badge/nothing-followme-brightgreen?logo=youtube&logoColor=DC143C&label=j.elmo">
-</a>
-
-
 1. [docker](framework/docker/docker.md)
 2. [clash-linux-config](java/clash配置.md)
 3. [swagger](framework/swagger-demo/swagger笔记.md)
