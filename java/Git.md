@@ -1,3 +1,29 @@
+# 问题记录1
+> 参考方案地址：[知乎](https://zhuanlan.zhihu.com/p/521340971)
+## 问题： 
+git clone , git push , git pull等所有使用ssh url的命令没反应,过段时间后显示连接超时。
+## 原因：
+ssh协议默认使用22端口。在机器的`~/.ssh/config`文件中没设置ssh端口，或者压根就没有config文件，又或者域名设置错误，又或者系统没开启ssh服务，都有可能导致这个情况的发生。
+## 解决：
+1. 系统启动ssh服务，让其监听22端口
+   ```
+   systemctl stop ssh
+   systemctl start ssh
+   systemctl status ssh #查看服务状态，应该要出现listening on 0.0.0.0:22 字样，表示服务正在监听22端口
+   ```
+2. 配置`~/.ssh/config`文件，让git的ssh操作走22端口
+    ```
+    Host github.com
+        Hostname ssh.github.com  #注意域名不要写错！！
+        Port 22
+    ```
+---
+---
+---
+
+
+ <details>
+ <summary>git命令操作</summary>
  ## git 指令
 - 常用指令
 
@@ -120,3 +146,4 @@ feat(Controller):用户查询接口开发
    - `git rebase --onto <new-base> <old-base>`：将 `<old-base>` 之后的提交转移到另一个基点 `<new-base>` 上。
 
 需要注意的是，`git reset` 和 `git rebase` 都可以改变历史，因此在团队协作中使用时需要谨慎，并遵循一致的工作流程。如果你不确定如何使用这些命令，建议在尝试之前备份你的工作目录或咨询有经验的同事。
+</details>
