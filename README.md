@@ -22,7 +22,7 @@
 3. [👉jVM📖](java/jVM组成.md)
 4. [👉MySql](java/SQL数据库.md)
 5. [👉jDK17](java/JDK17常用新特性.md)
-6. [👉Interview](interview/面试知识点.md)
+6. [👉Interview](interview/面试知识点.md)  
 
 <details>
 <summary>Obsidian笔记</summary>
