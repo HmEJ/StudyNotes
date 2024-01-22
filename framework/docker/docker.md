@@ -88,6 +88,18 @@ docker run \
 mysql
 ```
 
+创建nginx容器：
+```bash
+docker run \
+-p 9001:80 \
+--name nginx-sky \
+-v /home/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
+-v /home/nginx/conf/conf.d:/etc/nginx/conf.d \
+-v /home/nginx/log:/var/log/nginx \
+-v /home/nginx/html:/usr/share/nginx/html \
+-d nginx
+```
+
 # 容器网络互联
 
 默认情况下，所有容器都是以bridge方式连接到Docker的一个虚拟网桥上的
