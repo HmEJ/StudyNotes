@@ -133,15 +133,19 @@ docker run \
    更加详细指令参考[官方文档](https://docs.docker.com/engine/reference/builder/)
 
    ```dockerfile
-   # 基础镜像
-   FROM openjdk:11.0-jre-buster
-   # 设定时区
-   ENV TZ=Asia/Shanghai
-   RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-   # 拷贝jar包
-   COPY hm-service.jar /app.jar
-   # 入口
-   ENTRYPOINT ["java", "-jar", "/app.jar"]
+    # 基础镜像
+    FROM openjdk:11.0-jre-buster
+    # 设定时区
+    ENV TZ=Asia/Shanghai
+    RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+    # 指定容器工作目录（命令将在该目录下运行）
+    WORKDIR /app
+    # 拷贝jar包
+    COPY gd.jar /app/app.jar
+    # 曝露端口
+    EXPOSE 8080
+    # 入口
+    ENTRYPOINT ["java", "-jar", "app.jar"]
    ```
 
 4. 构建镜像
