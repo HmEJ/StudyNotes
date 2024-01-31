@@ -158,7 +158,7 @@ docker run \
     ```
     通常我们还希望将配置文件application.yaml映射到容器中，这样容器启动时就可以直接读取配置文件了。我们通常不需要显式地设置application.yaml的存放位置。只需要将配置文件放到jar同级目录下即可
     ```bash
-    docker run -d --name gd -p 8080:8080 -v /自定义路径/application.yaml:/app/application.yaml gd
+    docker run -d --name gd -p 8080:8080 -v /自定义路径/application.yaml:/app/application.yaml -v /自定义路径/logs/:/app/logs/ gd
     ```
 
 4. 构建镜像
