@@ -10,7 +10,7 @@
 
 ![温馨提示](img/Snipaste_2023-09-02_15-52-55.png)
 
-1. [👉单体复习](framework/sky-take-out/README.md)
+1. [👉单体项目知识点|纯干货](framework/sky-take-out/README.md) : 包含vue复习干货
 
 <details>
 <summary>其他</summary>
