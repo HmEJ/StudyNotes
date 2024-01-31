@@ -140,13 +140,26 @@ docker run \
     RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
     # 指定容器工作目录（命令将在该目录下运行）
     WORKDIR /app
-    # 拷贝jar包
+    # 拷贝jar包 这一步是为了将宿主机jar包copy到容器中指定位置
     COPY gd.jar /app/app.jar
     # 曝露端口
     EXPOSE 8080
     # 入口
     ENTRYPOINT ["java", "-jar", "app.jar"]
    ```
+    以上dockerfile构建的镜像，使用以下命令即可启动容器：
+    ```bash
+    docker runn -d --name gd -p 8080:8080 gd 
+    ```
+    这几乎是最简单的一个启动容器的命令了。但实际上我们更希望能够将容器运行产生的日志文件映射到宿主机上。此时就要修改我们的dockerfile了。具体的日志生产地址取决于项目的配置。这里假设我们的项目产生的日志文件位置在`/app/logs`下，我们的dockerfile只需要添加：
+    ```dockerfile
+    #创建日志存放目录（容器内）
+    RUN mkdir -p /app/logs
+    ```
+    通常我们还希望将配置文件application.yaml映射到容器中，这样容器启动时就可以直接读取配置文件了。我们通常不需要显式地设置application.yaml的存放位置。只需要将配置文件放到jar同级目录下即可
+    ```bash
+    docker run -d --name gd -p 8080:8080 -v /自定义路径/application.yaml:/app/application.yaml gd
+    ```
 
 4. 构建镜像
 
@@ -159,6 +172,8 @@ docker run \
    ```
 
 5. Docker run部署应用
+
+此时我们的云服务器docker已经跑起来了。这里我用的阿里云的ECS，我们还需要最后一步，就是在安全组中开放我们的80(http),443(https)以及我们的项目端口8080。这样，我们的项目才能真正被外网访问到。
 
 ## 前端部署
 
