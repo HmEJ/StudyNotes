@@ -12,6 +12,10 @@
 
 ## 系统
 
+- `scp` 用于linux之间复制文件和目录,scp是加密的
+
+- `chsh` 更改使用者shell设定
+
 - `tree <目录>` 显示指定目录的树形结构 
 
 - `whereis`  定位一个“命令”的二进制文件、源文件、手册文件
@@ -49,6 +53,24 @@ apt源位置：
 ```bash
 /etc/apt/sources.list
 ```
+
+ali源：
+```
+deb https://mirrors.aliyun.com/debian/ bullseye main contrib non-free
+deb-src https://mirrors.aliyun.com/debian/ bullseye main contrib non-free
+
+deb https://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
+deb-src https://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
+
+deb https://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free
+deb-src https://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free
+
+deb https://mirrors.aliyun.com/debian-security/ bullseye-security main contrib non-free
+deb-src https://mirrors.aliyun.com/debian-security/ bullseye-security main contrib non-free
+```
+
+参考: [url](https://wph.im/190.html)
+
 
 ## 配置终端显示的路径前缀
 
@@ -163,4 +185,63 @@ export PS1='[\[\e[1;35m\]\u@\h:\[\e[0m\]\[\e[1;33m\]\W\[\e[1;35m\]\[\e[0m\]]\[\e
 7==反白显示
 8==不可见
 ```
+## ZSH - 最强终端
+1. 检查当前可用shell
+   
+   ```bash
+   cat /etc/shells
+   ```
 
+2. 查看当前使用的shell
+
+   ```bash
+   echo $SHELL
+   ```
+
+3. 安装zsh shell
+
+   ```bash
+   apt install zsh
+   ```
+
+4. 切换shell
+
+   ```bash
+   chsh -s /bin/zsh
+   ```
+
+5. 安装oh my zsh
+
+   ```bash
+   sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+   ```
+
+6. 下载语法高亮插件
+
+   ```bash
+   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-syntax-highlighting
+   ```
+
+7. 下载自动提示插件
+
+   ```bash
+   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-autosuggestions
+   ```
+
+8. 配置 `~/.zshrc`
+
+   ```bash
+   nano ~/.zshrc
+   ```
+
+   ```bash
+   plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+   ```
+
+9. 更新`.zshrc`
+
+   ```bash
+   source ~/.zshrc
+   ```
+
+   
