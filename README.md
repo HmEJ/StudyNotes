@@ -10,16 +10,22 @@
 
 ![温馨提示](img/Snipaste_2023-09-02_15-52-55.png)
 
+1. [👉单体复习](framework/sky-take-out/README.md)
 
-1. [👉Knowledge📕](java/🌟重要知识点汇总.md)
-2. [👉Git📖](java/Git.md)
-3. [👉jVM📖](java/jVM组成.md)
+<details>
+<summary>其他</summary>
+
+1. [👉Git📖](java/Git.md)
+3. [👉JVM📖](java/jVM组成.md)
 4. [👉MySql](java/SQL数据库.md)
-5. [👉jDK17](java/JDK17常用新特性.md)
+5. [👉JDK17](java/JDK17常用新特性.md)
 6. [👉Interview](interview/面试知识点.md)  
+7. [👉Knowledge📕](java/🌟重要知识点汇总.md)
+</details>
 
 <details>
 <summary>Obsidian笔记</summary>
+
 
 1. [👉HTML基础📖](java/1-HTML基础.md)
 8. [👉CSS📖](java/2-CSS.md)
