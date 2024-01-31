@@ -2,9 +2,10 @@
 # 学习笔记
 
 1. [docker](framework/docker/docker.md)
-2. [clash-linux-config](java/clash配置.md)
-3. [swagger](framework/swagger-demo/swagger笔记.md)
-4. [短信服务和邮箱服务的使用方法记录](framework/email-demo/记录.md)
+2. [linux知识点速记](java/linux知识速记.md)
+3. [clash-linux-config](java/clash配置.md)
+4. [swagger](framework/swagger-demo/swagger笔记.md)
+5. [短信服务和邮箱服务的使用方法记录](framework/email-demo/记录.md)
 
 ## 笔记
 
