@@ -52,6 +52,16 @@
 
 ## 框架
 
+1. [👉springboot](framework/springboot-helloworld/学习记录.md)
+9.  [👉MyBatis-Plus](framework/mybatis-plus/mp-demo/MyBatis-Plus笔记.md)
+10. [👉SpringCloud](framework/SpringCloud/springcloud笔记.md)
+11. [👉Redis](framework/redis_study/学习记录.md)
+12. [👉RabbitMQ](framework/mq-study/MQ.md)
+13. [👉ElasticSearch](framework/es-study/es.md)
+
+<details>
+<summary>其他</summary>
+
 1. [👉MyBatis 逆向工程](java/mybatis-generator.md)
 2. [👉Spring AOP|声明式事务](framework/SpringPractice10-6/学习记录10-6.md)
 3. [👉SpringMVC 了解MVC|核心组件|控制流程](framework/SpringMVC/SpringMVC学习记录10-7.md)
@@ -59,11 +69,8 @@
 5. [👉SpringMVC 异步通信|上传与下载](framework/SpringMVC03/SpringMVC02/SpringMVC45%2010-1112.md)
 6. [👉SSM整合](framework/ssm-integration/记录.md)
 7. [👉SSM整合 聚合式](framework/web-aggregation/记录.md)
-8. [👉springboot](framework/springboot-helloworld/学习记录.md)
-9.  [👉MyBatis-Plus](framework/mybatis-plus/mp-demo/MyBatis-Plus笔记.md)
-10. [👉SpringCloud](framework/SpringCloud/springcloud笔记.md)
-11. [👉RabbitMQ](framework/mq-study/MQ.md)
-12. [👉ElasticSearch](framework/es-study/es.md)
+</details>
+
 ## 设计模式
 
 1. [👉设计模式](design_pattern/设计模式.md)
