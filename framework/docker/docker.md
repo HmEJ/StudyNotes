@@ -68,8 +68,7 @@ docker run --name tsb -p 8898:8898 -d testspringboot
 ```json
 {
     "registry-mirrors": [     //配置源
-      "https://hub-mirror.c.163.com",
-      "https://mirror.baidubce.com"
+      "https://mirror.ccs.tencentyun.com"
     ],
     "data-root": "/home/docker/docker_data"   //自定义docker数据存储位置
   }
