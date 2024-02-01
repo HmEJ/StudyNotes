@@ -183,6 +183,17 @@
 
 # 配置
 
+## 配置环境变量
+
+同样是在~/.bashrc文件下(或者~/.zshrc 取决于你的shell)
+添加：
+
+```shell
+export PATH=$PATH:/usr/local/nginx/sbin
+```
+
+将指定目录添加到环境变量中
+
 ## 配置命令别名
 
 在 ~/.bashrc 下 
