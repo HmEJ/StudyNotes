@@ -62,9 +62,9 @@ docker run --name tsb -p 8898:8898 -d testspringboot
 > docker安装：https://docker-practice.github.io/zh-cn/install/debian.html
 > 
 > docker高版本更改数据存储位置: https://www.cnblogs.com/chentiao/p/17409226.html
->
-> 修改/添加docker源： 修改/etc/docker/daemon.json文件，添加镜像站:
-> 
+
+ - 修改/添加docker源： 修改/etc/docker/daemon.json文件，添加镜像站:
+ 
 ```json
 {
     "registry-mirrors": [     //配置源
@@ -73,8 +73,23 @@ docker run --name tsb -p 8898:8898 -d testspringboot
     "data-root": "/home/docker/docker_data"   //自定义docker数据存储位置
   }
 ```
+然后重新加载守护进程
+```shell
+systemctl daemon-reload
+```
 
-创建mysql容器：
+重启docker服务
+```shell
+service docker restart 
+#适用于较旧的linux docker启动脚本在/etc/init.d/docker
+```
+```shell
+systemctl restart docker 
+#适用于较新的linux docker启动脚本在/usr/lib/systemd/system/docker.service
+```
+
+
+- 创建mysql容器：
 ```bash
 docker run \
 --name mysql-es \
@@ -87,7 +102,7 @@ docker run \
 mysql
 ```
 
-创建nginx容器：
+- 创建nginx容器：
 ```bash
 docker run \
 -p 9001:80 \
@@ -244,4 +259,13 @@ networks:               # 网络配置
 
 将前端服务，后端服务的jar包，以及dockfile放到同一目录的下
 
-配置完成后 使用 `docker compose` 命令进行部署  
+- 启动项目
+
+  ```shell
+  docker compose up -d
+  ```
+- 停止项目
+
+  ```shell
+  docker compose down
+  ```
