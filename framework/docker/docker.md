@@ -213,7 +213,7 @@ version: "3.8"
 
 services:
   mysql:                # 数据库服务
-    image: mysql
+    image: mysql  # 拉取镜像
     container_name: mysql  # 容器名
     ports:
       - "3306:3306"
@@ -227,7 +227,8 @@ services:
     networks:
       - hm-net
   hmall:                  # 后端服务
-    build: 
+    image: hmall-img  # 指定了构建镜像的名字
+    build:    # 构建镜像
       context: .
       dockerfile: Dockerfile
     container_name: hmall
@@ -238,7 +239,7 @@ services:
     depends_on:           # 依赖项
       - mysql
   nginx:                 # 前端服务
-    image: nginx
+    image: nginx  # 拉取镜像
     container_name: nginx
     ports:
       - "18080:18080"
@@ -268,4 +269,8 @@ networks:               # 网络配置
 
   ```shell
   docker compose down
+  ```
+- 查看docker compose管理运行的容器
+  ```shell
+  docker compose ps [-a]
   ```
