@@ -264,30 +264,36 @@ alias dps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Status}
 alias dis='docker images'
 ```
 
-## apt源
+## 源
 
-apt源位置：
+- apt源位置：
 
-```bash
-/etc/apt/sources.list
-```
+  ```shell
+  /etc/apt/sources.list
+  ```
 
-ali源：
-```
-deb https://mirrors.aliyun.com/debian/ bullseye main contrib non-free
-deb-src https://mirrors.aliyun.com/debian/ bullseye main contrib non-free
+  ```shell
+  deb https://mirrors.aliyun.com/debian/ bullseye main contrib non-free
+  deb-src https://mirrors.aliyun.com/debian/ bullseye main contrib non-free
+  
+  deb https://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
+  deb-src https://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
+  
+  deb https://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free
+  deb-src https://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free
+  
+  deb https://mirrors.aliyun.com/debian-security/ bullseye-security main contrib non-free
+  deb-src https://mirrors.aliyun.com/debian-security/ bullseye-security main contrib non-free
+  ```
 
-deb https://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
-deb-src https://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
+​	参考: [url](https://wph.im/190.html)
 
-deb https://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free
-deb-src https://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free
+- yum源位置:
 
-deb https://mirrors.aliyun.com/debian-security/ bullseye-security main contrib non-free
-deb-src https://mirrors.aliyun.com/debian-security/ bullseye-security main contrib non-free
-```
-
-参考: [url](https://wph.im/190.html)
+  ```shell
+  /etc/yum.repos.d/
+  #这里的.d 是一种命名风格，表示directory 目录的意思
+  ```
 
 
 ## shell显示的路径前缀
