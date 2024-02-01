@@ -12,9 +12,9 @@
 
 ## 系统
 
-- `scp` 用于linux之间复制文件和目录,scp是加密的
+- `scp` 用于linux之间复制文件和目录,scp是加密的(ssh远程连接时上传文件用)
 
-- `chsh` 更改使用者shell设定
+- `chsh` 更改使用者shell设定(切换shell类型:bash, zsh等)
 
 - `tree <目录>` 显示指定目录的树形结构 
 
@@ -185,7 +185,7 @@ export PS1='[\[\e[1;35m\]\u@\h:\[\e[0m\]\[\e[1;33m\]\W\[\e[1;35m\]\[\e[0m\]]\[\e
 7==反白显示
 8==不可见
 ```
-## ZSH - 最强终端
+## zsh shell
 1. 检查当前可用shell
    
    ```bash
@@ -244,4 +244,24 @@ export PS1='[\[\e[1;35m\]\u@\h:\[\e[0m\]\[\e[1;33m\]\W\[\e[1;35m\]\[\e[0m\]]\[\e
    source ~/.zshrc
    ```
 
+### 主题和插件
+
+zsh支持插件扩展和主题功能，并且官方提供了很多插件和主题，可以自行选择安装。
+在oh-my-zsh官方的[github wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)中列出了很多内置的主题，这些主题都被安装在`~/.oh-my-zsh/themes/`下。我们不仅可以应用这些内置主题，还可以在这些内置主题上进行二次定制，非常银杏化！
+
+zsh插件安装目录是`~/.oh-my-zsh/pulgins/`
+
+- 更换主题
    
+   - 修改`~/.zshrc`
+
+   ```bash
+   ZSH_THEME="itchy" #我比较中意这个主题
+   ```
+- 安装插件
+ 
+  - 修改`~/.zshrc`
+   
+   ```bash
+   plugins=(git zsh-syntax-highlighting zsh-autosuggestions) #这里我安装了两个插件：语法高亮和自动提示
+   ```
