@@ -124,6 +124,10 @@ public class BaseContext {
 //...
 ```
 
+为了避免内存泄漏，ThreadLocal在使用完毕后，需要调用remove方法，将当前线程的ThreadLocalMap中的值清除。
+
+我们可以在拦截器中preHandle方法设置ThreadLocal的值，在afterCompletion方法中调用remove清除ThreadLocal的值。
+
 # 分页查询
 这里用到的是mybatis框架提供的分页查询插件：PageHelper
 
