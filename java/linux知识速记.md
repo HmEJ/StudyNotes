@@ -178,11 +178,13 @@
 
 ## 系统
 
-- `tail` 将文件内容写到标准输出(shell) 可以持续用来打印日志文件内容
+- `tail` 将文件内容写到标准输出(shell) 可以持续用来打印日志文件内容 `tail -f <目录>`
 
 - `more` 分页查看指定目录的完全内容
 
-- `scp` 用于linux之间复制文件和目录,scp是加密的(ssh远程连接时上传文件用)
+- `scp` 用于linux之间复制文件和目录
+  - `scp abc.txt root@ipaddress:/home` 将abc.txt上传到指定ip地址的home目录下
+  - `scp root@ipaddress:/home/abc.txt ./` 将指定ip地址的home目录下的abc.txt下载到当前shell目录下
 
 - `chsh` 更改使用者shell设定(切换shell类型:bash, zsh等)
 
