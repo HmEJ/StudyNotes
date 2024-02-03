@@ -208,6 +208,14 @@
 
 # 配置
 
+## 以root身份运行vscode
+
+```shell
+sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir=/root/.vscode/
+```
+
+为了方便可以给code再配个别名，加上这些参数就好了。
+
 ## 系统服务
 
 debian系统服务目录：
