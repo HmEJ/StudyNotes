@@ -208,6 +208,12 @@
 
 # 配置
 
+## hosts
+
+ ```shell
+ /etc/hosts
+ ```
+
 ## vscode命令参数
 
 ```shell
@@ -216,7 +222,7 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir=/root/.vscode/
 
 为了方便可以给code再配个别名，加上这些参数就好了。我使用的debian12系统在root模式下使用vscode不能输入中文，不知道什么原因...🫠
 
-## 系统服务
+## 服务
 
 debian系统服务目录：
 
@@ -526,6 +532,8 @@ userdel -r www
 
 # 优化
 
+## 扩展
+
 我使用的是debian gnome桌面
 
 记录一些提升体验的扩展程序：
@@ -545,3 +553,10 @@ userdel -r www
 3. [gnome-shell-extension-appindicator](https://github.com/ubuntu/gnome-shell-extension-appindicator)
 
    因为gnome桌面无法显示后台运行的程序，有的应用程序已关闭就进入后台运行，无法再次唤起。这种情况太让人头疼。这个扩展程序可以让桌面系统显示托盘程序。实现类似win的右下角托盘效果。
+
+## 体验
+
+有时候在 `/etc/profile` 中配置了别名或者环境变量，但是每次重启shell或者重启系统，这些配置都会失效，都必须再执行一遍`source /etc/profile`才行。
+
+解决： 在`~/.bashrc` 中添加 `source /etc/profile`
+
