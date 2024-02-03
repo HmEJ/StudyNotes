@@ -33,10 +33,11 @@ yacd无法连接9090端口访问后台界面
 ---
 ---
 
-
 <details>
 <summary> 原生方式部署clash </summary>
+
 ## 1. 安装clash文件
+
 
 ## 2. 配置相关文件
 
