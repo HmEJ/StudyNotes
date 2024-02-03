@@ -52,7 +52,7 @@
 
 ## 框架
 
-1. [👉springboot](framework/springboot-helloworld/学习记录.md)
+1. [👉SpringBoot](framework/springboot-helloworld/学习记录.md)
 9.  [👉MyBatis-Plus](framework/mybatis-plus/mp-demo/MyBatis-Plus笔记.md)
 10. [👉SpringCloud](framework/SpringCloud/springcloud笔记.md)
 11. [👉Redis](framework/redis_study/学习记录.md)
