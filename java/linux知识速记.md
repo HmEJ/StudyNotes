@@ -208,13 +208,13 @@
 
 # 配置
 
-## 以root身份运行vscode
+## vscode命令参数
 
 ```shell
 sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir=/root/.vscode/
 ```
 
-为了方便可以给code再配个别名，加上这些参数就好了。
+为了方便可以给code再配个别名，加上这些参数就好了。我使用的debian12系统在root模式下使用vscode不能输入中文，不知道什么原因...🫠
 
 ## 系统服务
 
