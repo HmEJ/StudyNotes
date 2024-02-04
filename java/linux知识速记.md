@@ -208,6 +208,21 @@
 
 # 配置
 
+## 防火墙
+
+debian使用ufw防火墙：
+
+```shell
+apt install ufw
+ufw status 
+```
+
+centos直接使用systemctl :
+
+```shell
+systemctl status firewalld
+```
+
 ## hosts
 
  ```shell
