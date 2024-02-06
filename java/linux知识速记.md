@@ -1,4 +1,4 @@
-> 记录使用debian过程中收获的一些linux知识点(持续更新)
+> 记录使用debian过程中收获的一些linux知识点
 
 # she-bang
 

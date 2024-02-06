@@ -1,27 +1,26 @@
-
-# 学习笔记
-
-1. [docker](framework/docker/docker.md)
-2. [linux知识点速记](java/linux知识速记.md)
-3. [clash-linux-config](java/clash配置.md)
-4. [swagger](framework/swagger-demo/swagger笔记.md)
-5. [短信服务和邮箱服务的使用方法记录](framework/email-demo/记录.md)
-
-## 笔记
-
 ![温馨提示](img/Snipaste_2023-09-02_15-52-55.png)
 
-1. [👉单体项目知识点|纯干货](framework/sky-take-out/README.md) : 包含vue复习干货
+# 速查
+
+1. [docker速查](framework/docker/docker.md)
+2. [linux速查](java/linux知识速记.md)
+3. [clash-linux速查](java/clash配置.md)
+4. [短信/邮箱速查](framework/email-demo/记录.md)
+
+# 记录
+
+1. [👉单体项目知识点|vue复习](framework/sky-take-out/README.md)
+   
 
 <details>
 <summary>其他</summary>
 
 1. [👉Git📖](java/Git.md)
-3. [👉JVM📖](java/jVM组成.md)
-4. [👉MySql](java/SQL数据库.md)
-5. [👉JDK17](java/JDK17常用新特性.md)
-6. [👉Interview](interview/面试知识点.md)  
-7. [👉Knowledge📕](java/🌟重要知识点汇总.md)
+2. [👉JVM📖](java/jVM组成.md)
+3. [👉MySql](java/SQL数据库.md)
+4. [👉JDK17](java/JDK17常用新特性.md)
+5. [👉Interview](interview/面试知识点.md)  
+6. [👉Knowledge📕](java/🌟重要知识点汇总.md)
 </details>
 
 <details>
@@ -48,9 +47,9 @@
 13. [👉JavaWeb📖](java/JavaWeb.md)
 </details>
 
----
 
-## 框架
+
+# 技术点
 
 1. [👉SpringBoot](framework/springboot-helloworld/学习记录.md)
 9.  [👉MyBatis-Plus](framework/mybatis-plus/mp-demo/MyBatis-Plus笔记.md)
@@ -58,6 +57,8 @@
 11. [👉Redis](framework/redis_study/学习记录.md)
 12. [👉RabbitMQ](framework/mq-study/MQ.md)
 13. [👉ElasticSearch](framework/es-study/es.md)
+14. [👉Nginx]()
+
 
 <details>
 <summary>其他</summary>
@@ -71,13 +72,7 @@
 7. [👉SSM整合 聚合式](framework/web-aggregation/记录.md)
 </details>
 
-## 设计模式
-
-1. [👉设计模式](design_pattern/设计模式.md)
-
----
-
-## 测试题
+# 测试题
 
 1. [👉数组💯](java/面试简单题测试.md)
 2. [👉异常和常用类💯](java/模拟测试摸底题.md)
@@ -86,8 +81,7 @@
 5. [👉线程💯](java/线程简单测试题.md)
 6. [👉SQL💯](java/SQL简单测试题.md)
     附: 💾[sql文件](java/tb_order.sql)
----
 
-## 感谢
+# 感谢
 感谢`jinhui-Huang`大佬对我学习提供的帮助
 👉<a href="https://github.com/jinhui-Huang"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.spencerwoo.com%2Fsubstats%2F%3Fsource%3Dgithub%26queryKey%3Djinhui-Huang&query=%24.data.totalSubs&suffix=%20followers&logo=github&label=jinhui-Huang&labelColor=0996AD&color=0786BC)"></a>
