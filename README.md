@@ -57,7 +57,7 @@
 11. [👉Redis](framework/redis_study/学习记录.md)
 12. [👉RabbitMQ](framework/mq-study/MQ.md)
 13. [👉ElasticSearch](framework/es-study/es.md)
-14. [👉Nginx]()
+14. [👉Nginx](framework/nginx-study/README.md)
 
 
 <details>
