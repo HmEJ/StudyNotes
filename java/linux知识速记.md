@@ -196,9 +196,46 @@ alias dis='docker images'
   #这里的.d 是一种命名风格，表示directory 目录的意思
   ```
 
-## 
+## 美化
+
+我的终端一直显示的完整的路径前缀，这样如果我操作的文件非常深入，那么就很难受。因此我就把他改成了只显示最后一级目录，这样清爽一些
+
+配置方式：在`/etc/profile`中配置就可以应用到全局。当然也可在普通用户或者root用户的.bashrc中配置
+
+```bash
+# 完全显示完整的工作目录名称
+export PS1='[\u@\h $PWD]\$ '
+# 只列出最后一个目录
+export PS1='[\u@\h \W]\$'  # 我用的就是这个
+# 显示完整工作目录，当前用户目录会以 ~代替
+export PS1='[\u@\h \w]\$'
+```
+
+修改完成后重新加载该配置文件即可 `source /etc/profile`
+
+这里我记录一个我自己稍微改装了一下的比较满意的配置：
+
+```bash
+export PS1='[\[\e[1;35m\]\u@\h:\[\e[0m\]\[\e[1;33m\]\W\[\e[1;35m\]\[\e[0m\]]\[\e[1;34m\]\$ \[\e[0m\]'
+```
+
+### zsh shell
+
+zsh支持插件扩展和主题功能。
+
+[oh-my-zsh](https://ohmyz.sh/)是zsh的一个实现。是管理zsh配置的框架。
+
+在oh-my-zsh官方的[github wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)中列出了很多内置的主题。我们不仅可以应用这些内置主题，还可以在这些内置主题上进行二次定制，非常银杏化！
+
+- 插件位于:   `~/.oh-my-zsh/pulgins/`
+- 主题位于:   `~/.oh-my-zsh/themes/`
+
+- 修改插件/主题： 在`~/.zshrc`中配置。 
+
+#### 安装oh-my-zsh
+
 1. 检查当前可用shell
-   
+
    ```bash
    cat /etc/shells
    ```
@@ -239,7 +276,7 @@ alias dis='docker images'
    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-autosuggestions
    ```
 
-8. 配置 `~/.zshrc`
+8. 安装插件
 
    ```bash
    nano ~/.zshrc
@@ -253,54 +290,6 @@ alias dis='docker images'
 
    ```bash
    source ~/.zshrc
-   ```
-
-# shell
-
-## 美化
-
-我的终端一直显示的完整的路径前缀，这样如果我操作的文件非常深入，那么就很难受。因此我就把他改成了只显示最后一级目录，这样清爽一些
-
-配置方式：在`/etc/profile`中配置就可以应用到全局。当然也可在普通用户或者root用户的.bashrc中配置
-
-```bash
-# 完全显示完整的工作目录名称
-export PS1='[\u@\h $PWD]\$ '
-# 只列出最后一个目录
-export PS1='[\u@\h \W]\$'  # 我用的就是这个
-# 显示完整工作目录，当前用户目录会以 ~代替
-export PS1='[\u@\h \w]\$'
-```
-
-修改完成后重新加载该配置文件即可 `source /etc/profile`
-
-这里我记录一个我自己稍微改装了一下的比较满意的配置：
-
-```bash
-export PS1='[\[\e[1;35m\]\u@\h:\[\e[0m\]\[\e[1;33m\]\W\[\e[1;35m\]\[\e[0m\]]\[\e[1;34m\]\$ \[\e[0m\]'
-```
-
-### zsh shell
-
-zsh支持插件扩展和主题功能，并且官方提供了很多插件和主题，可以自行选择安装。
-在oh-my-zsh官方的[github wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)中列出了很多内置的主题，这些主题都被安装在`~/.oh-my-zsh/themes/`下。我们不仅可以应用这些内置主题，还可以在这些内置主题上进行二次定制，非常银杏化！
-
-zsh插件安装目录是`~/.oh-my-zsh/pulgins/`
-
-- 更换主题
-
-  - 修改`~/.zshrc`
-
-  ```bash
-  ZSH_THEME="itchy" #我比较中意这个主题
-  ```
-
-- 安装插件
-
-  - 修改`~/.zshrc`
-
-   ```bash
-  plugins=(git zsh-syntax-highlighting zsh-autosuggestions) #这里我安装了两个插件：语法高亮和自动提示
    ```
 
 # 用户
