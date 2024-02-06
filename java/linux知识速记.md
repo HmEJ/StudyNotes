@@ -1,5 +1,28 @@
 > 记录使用debian过程中收获的一些linux知识点(持续更新)
 
+# she-bang
+
+`#!` 符号在脚本的第一行用于指定解释器运行环境
+
+比如，lua脚本的第一行
+
+```lua
+#! /usr/local/bin/lua
+print("hello world!");
+```
+
+此时我们就可以直接运行该文件，而不需要加`lua` 指令前缀来运行。因为she-bang已经指定了脚本的运行环境。
+
+# 终端快捷键
+
+`ctl+L` 清屏但不删除命令。内容向上滚动 ( 比clear要好得多 )
+
+`ctl+U` 清空当前命令(太有用了!)
+
+`shift+pageDown/up` 翻页
+
+`shift+home/end` 光标移至头/尾
+
 # 命令
 
 ## kill 
