@@ -9,7 +9,7 @@
 
 # 记录
 
-1. [👉单体项目知识点|vue复习](framework/sky-take-out/README.md)
+1. [👉单体项目知识点|vue2](framework/sky-take-out/README.md)
    
 
 <details>
@@ -58,6 +58,7 @@
 12. [👉RabbitMQ](framework/mq-study/MQ.md)
 13. [👉ElasticSearch](framework/es-study/es.md)
 14. [👉Nginx](framework/nginx-study/README.md)
+15. [👉Vue3](java/笔记.md)
 
 
 <details>

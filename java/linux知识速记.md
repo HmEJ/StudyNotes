@@ -296,6 +296,8 @@ zsh支持插件扩展和主题功能。
 
 `/etc/passwd` 文件中保存了机器上所有的用户信息
 
+## 用户
+
 添加用户
 
 ```shell
@@ -310,6 +312,20 @@ passwd www
 删除用户
 ``` shell
 userdel -r www
+```
+
+## 修改所属用户和用户组
+
+修改所属用户以及用户组
+
+```sh
+chown [-R] ownname:groupname filename
+```
+
+修改所属用户组
+
+```sh
+chgrp [-R] groupname filename
 ```
 
 # 优化
