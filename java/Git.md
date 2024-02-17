@@ -1,4 +1,4 @@
-# 问题记录1
+# 问题记录1: 总是无法push或pull
 > 参考方案地址：[知乎](https://zhuanlan.zhihu.com/p/521340971)
 ## 问题： 
 git clone , git push , git pull等所有使用ssh url的命令没反应,过段时间后显示连接超时。
@@ -17,13 +17,35 @@ ssh协议默认使用22端口。在机器的`~/.ssh/config`文件中没设置ssh
         Hostname ssh.github.com  #注意域名不要写错！！
         Port 22
     ```
----
----
----
 
+# 问题记录2:gitignore不生效
+
+## 问题:
+
+在项目一开始创建的时候没有创建.gitignore文件. 经过几轮提交后才后知后觉,写了.gitignore文件. 但是却不生效
+
+## 原因:
+
+是因为经过了提交后,git已经track了那些原本你不想提交的文件或目录,比如.idea目录, target目录等.
+
+## 解决:
+
+清除git缓存中的这些文件,然后再次add, commit, push
+
+```shell
+git rm --cached -r .idea/
+git rm --cached -r target/
+git rm --cached *.class
+git add .
+git commit -m "Update .gitignore to fix ignoring issues"
+```
+
+
+# git笔记
 
  <details>
  <summary>git命令操作</summary>
+
  ## git 指令
 - 常用指令
 

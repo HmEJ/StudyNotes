@@ -4,8 +4,9 @@
 
 1. [docker速查](framework/docker/docker.md)
 2. [linux速查](java/linux知识速记.md)
-3. [clash-linux速查](java/clash配置.md)
-4. [短信/邮箱速查](framework/email-demo/记录.md)
+3. [git速查](java/Git.md)
+4. [clash-linux速查](java/clash配置.md)
+5. [短信/邮箱速查](framework/email-demo/记录.md)
 
 # 记录
 
@@ -15,8 +16,7 @@
 <details>
 <summary>其他</summary>
 
-1. [👉Git📖](java/Git.md)
-2. [👉JVM📖](java/jVM组成.md)
+1. [👉JVM📖](java/jVM组成.md)
 3. [👉MySql](java/SQL数据库.md)
 4. [👉JDK17](java/JDK17常用新特性.md)
 5. [👉Interview](interview/面试知识点.md)  
