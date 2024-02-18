@@ -1,3 +1,5 @@
+> 学习git操作?一个游戏就够了: https://oschina.gitee.io/learn-git-branching/?NODEMO
+
 # 问题记录1: 总是无法push或pull
 > 参考方案地址：[知乎](https://zhuanlan.zhihu.com/p/521340971)
 ## 问题： 
