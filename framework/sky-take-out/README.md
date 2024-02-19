@@ -80,6 +80,11 @@ public Result exceptionHandler(SQLIntegrityConstraintViolationException e){
 ```
 
 # ThreadLocal
+
+[参考资料](https://cloud.tencent.com/developer/article/1600714)
+
+ThreadLocal作用就是在线程的生命周期内为线程提供共享变量
+
 ThreadLocal并不是一个Thread,而是Thread的局部变量。
 
 ThreadLocal为每个线程提供单独一份存储空间，具有线程隔离的效果。只有在线程内才能获取到对应的值，线程外则不能访问。
@@ -128,7 +133,17 @@ public class BaseContext {
 
 我们可以在拦截器中preHandle方法设置ThreadLocal的值，在afterCompletion方法中调用remove清除ThreadLocal的值。
 
+## 父子通信
+
+ThreadLocal本身是只能在同一个线程中共享. 但是他有一个实现类 `InheritableThreadLocal`, 译为 ' 可继承的ThreadLocal ' . 他支持父子线程之间共享数据. 
+
+```java
+// 使用InheritableThreadLocal作为实现
+private static final ThreadLocal<Person> THREAD_LOCAL = new InheritableThreadLocal<>();
+```
+
 # 分页查询
+
 这里用到的是mybatis框架提供的分页查询插件：PageHelper
 
 PageHelper底层也是基于ThreadLocal实现的。
