@@ -395,7 +395,15 @@ systemctl status firewalld
 
 # shell脚本
 
-## $, [], ()
+## 后台执行shell脚本
+
+执行命令后面加个 `&` 就好了
+
+```shell
+sh jmeter.sh &
+```
+
+## 符号
 
 > ${}, [], $(), $(()), [[]], (())的作用
 
