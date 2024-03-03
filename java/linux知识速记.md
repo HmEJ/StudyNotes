@@ -593,3 +593,30 @@ WSL安装: 参考[MS官方文档](https://learn.microsoft.com/zh-cn/windows/wsl/
 这里只是以docker desktop作为一个例子, 能学会举一反三, 应用到其他情况下. 同时也有助于我对wsl的理解. 
 
 有了wsl这么方便的东西, 还要什么虚拟机, 什么vmware, 什么virtualbox 都靠边站 !  😝. 
+
+## 问题记录
+
+1. wsl运行时出现警告信息: 
+
+   ```cmd
+   wsl: 检测到 localhost 代理配置，但未镜像到 WSL。
+   NAT 模式下的 WSL 不支持 localhost 代理。
+   ```
+
+**解决方法:**
+
+在`C:\\user\\xxx` 下创建一个 .wslconfig 文件, 内容如下:
+
+        ```yaml
+        [experimental]
+        autoMemoryReclaim=gradual  
+        networkingMode=mirrored
+        dnsTunneling=true
+        firewall=true
+        autoProxy=true
+        ```
+
+然后关闭wsl, 重新启动即可.
+
+
+
