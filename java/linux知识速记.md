@@ -172,22 +172,7 @@ alias dis='docker images'
   ```shell
   /etc/apt/sources.list
   ```
-
-  ```shell
-  deb https://mirrors.aliyun.com/debian/ bullseye main contrib non-free
-  deb-src https://mirrors.aliyun.com/debian/ bullseye main contrib non-free
-  
-  deb https://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
-  deb-src https://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
-  
-  deb https://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free
-  deb-src https://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free
-  
-  deb https://mirrors.aliyun.com/debian-security/ bullseye-security main contrib non-free
-  deb-src https://mirrors.aliyun.com/debian-security/ bullseye-security main contrib non-free
-  ```
-
-​	参考: [url](https://wph.im/190.html)
+​	参考: [url](https://developer.aliyun.com/mirror/)
 
 - yum源位置:
 
