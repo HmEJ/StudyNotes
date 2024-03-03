@@ -522,3 +522,74 @@ sh jmeter.sh &
            ((i=i+1))
    done
    ```
+
+# WSL
+
+windows subsystem of linux ( windows下的linux子系统 )
+
+WSL允许你在windows操作系统上运行linux子系统. 比虚拟机方便很多. 
+
+WSL安装: 参考[MS官方文档](https://learn.microsoft.com/zh-cn/windows/wsl/install-manual)
+
+如何安装, 官方给文档很详细了. 我这里主要记录一些wsl的常见操作
+
+## 常见命令
+
+- `wsl --help` - 帮助文档
+
+- `wsl` - 启动子系统
+- `wsl --shutdown` - 关闭子系统
+- `wsl --list -v`  - 列出所有的子系统及其对应的wsl版本号
+
+- `wsl --list --online` - 列出全部可用的子系统
+- `wsl -s <子系统>` - 设置默认的子系统
+
+## 导入和导出
+
+这个有点类似于挂载和卸载. 使用wsl安装的子系统在win上都会有一个磁盘映像来存储数据, 这个磁盘默认是装在C盘的, 但是我们可以手动更改他的位置. 
+
+对于linux系统来说, 在安装的时候不要让他自动安装.  选择手动安装. 自己去官网下载发行版的安装包. 然后将下载下来的.AppBundle后缀的文件改为.zip进行解压. 会得到系统映像文件 .appx后缀的文件, 再次将其后缀改为.zip进行解压, 最后会得到 .exe的可执行文件. 在想要安装的位置运行该exe可执行文件即可安装linux子系统. 然后会发现 有一个ext4.vhdx的磁盘映像文件, 这个就是子系统的数据盘.
+
+重点是在win上安装docker desktop. docker desktop的使用需要基于wsl . 如果默认安装的话, 他会生成两个磁盘映像文件, 一个是docker-desktop, 一个是docker-desktop-data. 他们都默认在 `C:\\user\\xx\\AppData\\Local\\Docker\\wsl` 位置下,  这样一旦docker镜像多了后, 非常占用c盘空间. 我们需要将这两个盘挂载到D盘下以节省C盘空间
+
+这就会用到wsl的导入和导出命令
+
+### 步骤
+
+1. 退出docker desktop , 关闭wsl
+
+   ```cmd
+   wsl --shutdown
+   ```
+
+2. 查看wsl的状态, 确认关闭
+
+   ```cmd
+   wsl --list -v
+   ```
+
+3. 导出docker-desktop-data磁盘文件
+
+   ```cmd
+   wsl --export docker-desktop-data "D:\\docker-desktop-data.tar"
+   ```
+
+4. 卸载docker-desktop-data磁盘文件 ( 此命令会删除 docker-desktop-data 的磁盘映像文件)
+
+   ```cmd
+   wsl --unregister docker-desktop-data
+   ```
+
+5. 将导出的磁盘文件重新导入wsl, 并指定导入的位置
+
+   ```cmd
+   wsl --import docker-desktop-data "D:\\.WSL\\Docker\\wsl" "D:\\docker-desktop-data.tar" --version 2
+   ```
+
+完成!
+
+但实际上, docker desktop设置中提供了更改disk image location功能, 可以让我们很方便的更改这两个磁盘映像文件的位置. 
+
+这里只是以docker desktop作为一个例子, 能学会举一反三, 应用到其他情况下. 同时也有助于我对wsl的理解. 
+
+有了wsl这么方便的东西, 还要什么虚拟机, 什么vmware, 什么virtualbox 都靠边站 !  😝. 
