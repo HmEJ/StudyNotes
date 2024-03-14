@@ -493,6 +493,8 @@ public class CommonController {
 
 # MyBatis主键回传
 
+## useGeneratedKeys属性
+
 mapper接口：
 
 ```java
@@ -519,6 +521,22 @@ xml文件：
 dishMapper.insert(dish);
 //获取菜品id（mybatis主键回传）
 Long id = dish.getId();
+```
+
+## selectkey标签
+
+通过mysql的`last_insert_id`函数来查询最新的id值.
+
+这种方式的主键回传更加灵活, 通过设置 `Order` 属性为 `AFTER` 或者 `BEFORE` 可以实现在插入前执行, 还是插入后执行.
+
+```xml
+<insert id="insert" parameterType="dish" useGeneratedKeys="true" keyProperty="id">
+    <selectKey keyProperty="id" resultType="java.lang.Long" order="after">
+      select last_insert_id()
+    </selectKey>
+    insert into dish(name, category_id)
+    values(#{name},#{categoryId})
+</insert>
 ```
 
 # `foreach`标签的`open`, `close` 属性
