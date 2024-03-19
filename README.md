@@ -14,10 +14,10 @@
 <details>
 <summary>其他</summary>
 
+1. [👉Interview](interview/面试知识点.md)  
 1. [👉JVM📖](java/jVM组成.md)
 3. [👉MySql](java/SQL数据库.md)
 4. [👉JDK17](java/JDK17常用新特性.md)
-5. [👉Interview](interview/面试知识点.md)  
 6. [👉Knowledge📕](java/🌟重要知识点汇总.md)
 1. [clash-linux速查](java/clash配置.md)
 7. [短信/邮箱速查](framework/email-demo/记录.md)
