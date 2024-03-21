@@ -46,6 +46,14 @@ docker run --name tsb -p 8898:8898 -d testspringboot
 访问测试，测试地址：http://172.19.186.149:8898/start/test
 </details>
 
+---
+
+修改容器配置命令: docker update [OPTIONS] CONTAINER [CONTAINER...]
+
+
+```shell
+docker update --restart no minio
+```
 
 
 ---
