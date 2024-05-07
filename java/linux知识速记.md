@@ -619,5 +619,11 @@ WSL安装: 参考[MS官方文档](https://learn.microsoft.com/zh-cn/windows/wsl/
 
 然后关闭wsl, 重新启动即可.
 
+# 查看机器的公网ip
 
+通过一些第三方服务可以实现. 
+
+```shell
+curl ip.sb
+```
 
