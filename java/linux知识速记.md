@@ -348,7 +348,9 @@ chgrp [-R] groupname filename
 
 `netstat` 显示系统网络信息 常用参数: 
 
-- `-ntlp` 显示使用tcp协议的进程名，端口，ip等信息
+- `-tunlp` 显示使用tcp协议的进程名，端口，ip等信息
+  
+> `netstat -tunlp | grep 781` 查看781进程监听的端口号.
 
 `ifconfig` 用于配置网络接口
 
