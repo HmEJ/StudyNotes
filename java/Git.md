@@ -45,6 +45,8 @@ git commit -m "Update .gitignore to fix ignoring issues"
 
 # git笔记
 
+查看提交树: `git log --graph --oneline --all`
+
  <details>
  <summary>git命令操作</summary>
 
