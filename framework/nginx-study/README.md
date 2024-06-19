@@ -1185,7 +1185,7 @@ location ~.*\.(png|jpg|gif)$ {
 
 当用户访问`/imgs`下的png, jpg, gif格式文件时，若是无效引用，则资源重定向到`/imgs`下的 `dt.jpg` 图片上。
 
-# RP
+# 反向代理
 
 反向代理：被代理的是**服务端**，用来隐藏服务端身份，提供负载均衡等能力
 
@@ -1236,6 +1236,79 @@ location ~.*\.(png|jpg|gif)$ {
 [帮助文档](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffer_size)
 
 设置用于读取从代理服务器收到的响应的第一部分的缓冲区的大小。
+
+# 正向代理
+
+使用nginx实现正向代理, 需要借助 [ngx_http_proxy_connect_module模块](https://github.com/chobits/ngx_http_proxy_connect_module?tab=readme-ov-file) .
+
+在release中下载该模块,  并应用补丁 (具体应用补丁查看[官方文档](https://github.com/chobits/ngx_http_proxy_connect_module?tab=readme-ov-file#select-patch))
+
+```shell
+cd /home/nginx-1.24.0 #进入源码根目录
+# 打补丁
+patch -p1 < /home/ngx_http_proxy_connect_module/patch/proxy_connect_rewrite_102101.patch
+```
+
+使用nginx源码编译安装, 添加该模块
+
+```shell
+cd /home/nginx-1.24.0
+./configure --add-module=../ngx_http_proxy_connect_module --with-http_ssl_module
+make
+sudo make install
+```
+
+编辑配置文件, 启用正向代理
+
+```nginx
+worker_processes  auto;
+
+error_log  /usr/local/nginx/logs/error.log warn;
+pid        /usr/local/nginx/logs/nginx.pid;
+
+events {
+    worker_connections  1024;
+}
+# 在 http 节中添加配置
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    # 配置日志
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log /usr/local/nginx/logs/access.log main;
+
+    # 配置代理缓存
+    proxy_cache_path /usr/local/nginx/cache levels=1:2 keys_zone=cache_zone:10m max_size=1g inactive=60m use_temp_path=off;
+
+    # 配置正向代理
+    server {
+        listen       8888;
+        resolver 223.5.5.5; 
+
+        # 允许 CONNECT 方法
+        proxy_connect;
+        proxy_connect_allow            all;
+        proxy_connect_connect_timeout  10s;
+        proxy_connect_read_timeout     10s;
+        proxy_connect_send_timeout     10s;
+
+        location / {
+            proxy_pass http://$host;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+
+}
+```
+
+在需要使用代理的机器上配置代理即可.
 
 # 安全控制
 
@@ -1373,7 +1446,7 @@ server {
 
 > 当用户访问localhost的80端口时，会被重定向到https协议的443端口服务上。这样用户进入网站就会是https协议的了。
 
-# LB
+# 负载均衡
 
 ## 常见的处理方式
 
