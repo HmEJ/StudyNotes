@@ -219,9 +219,13 @@ make & make install
 
 ## 系统服务
 
-centos系统服务配置：`/usr/lib/systemd/system/nginx.service`
+linux系统服务配置: 
 
-debian系统服务配置: `/lib/systemd/system/nginx.service`
+`/usr/lib/systemd/system/nginx.service` 
+
+或者
+
+`/lib/systemd/system/nginx.service`
 
 nginx.service内容：
 
