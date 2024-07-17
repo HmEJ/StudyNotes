@@ -113,3 +113,27 @@ git stash list 显示栈中的条目
 执行`git stash`指令之后，实际上会创建两个新的commit。一个是存储暂存区中的文件的commit，一个是存储工作区中的文件的commit。所以此时如果查看git提交树，会发现树前端多了一个分叉，并且多了两个提交。这是正常现象。
 
 当我们通过`git stash pop` 弹栈时，git会将刚才提交的文件恢复到当前HEAD上。并且删除那两个commit。
+
+# git checkout
+
+该命令有两个作用：
+
+- 切换到指定分支或者commit
+  
+  ```shell
+  git checkout <branch-name>
+  ```
+
+- 从指定的提交或分支中恢复文件到当前工作目录
+  
+  ```shell
+  git checkout <commit-or-branch> -- <file-path>
+  ```
+
+例如：
+
+```shell
+git checkout temp-branch -- README.md $(find . -name "*.yml")
+```
+
+以上命令意为：将temp-branch分支下的README.md文件和所有的yml文件恢复到当前分支（可能为main）下。
