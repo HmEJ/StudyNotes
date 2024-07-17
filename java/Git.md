@@ -1,28 +1,38 @@
 > 学习git操作?一个游戏就够了: https://learngitbranching.js.org/?locale=zh_CN
->
-> - 出现`refusing to merge unrelated histories`报错时，说明本地仓库和远端仓库不一致，解决方法：`git pull/push --allow-unrelated-histories`
+> 
+> - 出现 `refusing to merge unrelated histories`报错时，说明本地仓库和远端仓库不一致，解决方法：`git pull/push --allow-unrelated-histories`
 > - rebase过程中出现 `(master|REBASE 1/10)` 解决方案：
->   使用`git rebase --abort` 指令终止提交回退。
+>   使用 `git rebase --abort` 指令终止提交回退。
 
 # 问题记录1: 总是无法push或pull
+
 > 参考方案地址：[知乎](https://zhuanlan.zhihu.com/p/521340971)
-## 问题： 
+
+## 问题：
+
 git clone , git push , git pull等所有使用ssh url的命令没反应,过段时间后显示连接超时。
+
 ## 原因：
-ssh协议默认使用22端口。在机器的`~/.ssh/config`文件中没设置ssh端口，或者压根就没有config文件，又或者域名设置错误，又或者系统没开启ssh服务，都有可能导致这个情况的发生。
+
+ssh协议默认使用22端口。在机器的 `~/.ssh/config`文件中没设置ssh端口，或者压根就没有config文件，又或者域名设置错误，又或者系统没开启ssh服务，都有可能导致这个情况的发生。
+
 ## 解决：
+
 1. 系统启动ssh服务，让其监听22端口
+   
    ```
    systemctl stop ssh
    systemctl start ssh
    systemctl status ssh #查看服务状态，应该要出现listening on 0.0.0.0:22 字样，表示服务正在监听22端口
    ```
-2. 配置`~/.ssh/config`文件，让git的ssh操作走22端口
-    ```
-    Host github.com
-        Hostname ssh.github.com  #注意域名不要写错！！
-        Port 22
-    ```
+
+2. 配置 `~/.ssh/config`文件，让git的ssh操作走22端口
+   
+   ```
+   Host github.com
+       Hostname ssh.github.com  #注意域名不要写错！！
+       Port 22
+   ```
 
 # 问题记录2:gitignore不生效
 
@@ -53,18 +63,22 @@ git log --graph --oneline --all
 ```
 
 # 修改commit
+
+交互式rebase：
+
 ```sh
 git rebase -i <commit id>
 ```
 
 修改git message前的关键字，修改message一般改为reword
+
 - **pick**：保留该 commit
 - **reword**：保留该 commit，但我需要修改该commit的 Message
 - **edit**：保留该 commit, 但我要停下来修改该提交(包括修改文件)
 - **squash**：将该 commit 和前一个 commit 合并
 - **fixup**：将该 commit 和前一个 commit 合并，但我不要保留该提交的注释信息
 - **exec**：执行 shell 命令
-- **drop**：丢弃这个 commit
+- **drop**：<font color="red"> 丢弃这个 commit </font>
 
 修改完成 强制push到远端 : `git push origin [分支] -f`
 
@@ -73,16 +87,29 @@ git rebase -i <commit id>
 分为两种情况：
 
 - 强制回滚到某一个提交处，并且不打算保留该提交之后的所有提交
-
+  
   ```sh
   git reset --hard <commit id>
   ```
 
 - 回滚到某一个提交处，但是保留之后的提交
-
+  
   ```sh
   git revert <commit id>
   ```
-
+  
   revert操作是新增一个提交，但是该提交的内容是指定commit id的内容。相当于抵消了指定提交之后的所有更改，但是保留了这些更改。
 
+# 暂存
+
+```shell
+git stash list 显示栈中的条目
+          show 显示条目信息
+          pop  弹栈
+```
+
+原理：
+
+执行`git stash`指令之后，实际上会创建两个新的commit。一个是存储暂存区中的文件的commit，一个是存储工作区中的文件的commit。所以此时如果查看git提交树，会发现树前端多了一个分叉，并且多了两个提交。这是正常现象。
+
+当我们通过`git stash pop` 弹栈时，git会将刚才提交的文件恢复到当前HEAD上。并且删除那两个commit。
