@@ -25,11 +25,12 @@ print("hello world!");
 
 # 命令
 
-## kill 
+## kill
 
 `kill <-信号> <pid>`
 
 - `TERM` 正常退出程序
+
 - `INT` 相当于ctrl+c 来中断一个程序
 
 - `KILL` 杀死进程，强制剥离cpu释放资源
@@ -39,6 +40,7 @@ print("hello world!");
 - `CONT` 恢复进程
 
 - `HUP` 重载，更新进程配置
+
 - `USER1`, `USER2`用户自定义信号
 
 > 1. **TERM (15 - SIGTERM):** 发送TERM信号通知进程正常退出。这是一种优雅的终止方式，允许进程完成正在进行的任务并清理资源。大多数进程在接收到TERM信号时会尽力进行清理操作，然后自行退出。
@@ -49,18 +51,21 @@ print("hello world!");
 ## ⛔😏💥☢️😱☠️
 
 - `rm -rf /` 删库跑路
-  
-- `dd if=/dev/zero of=/dev/sda` 擦除系统盘数据
-  - 从`/dev/zero`读取数据，然后写入到`/dev/sda`，相当于清空系统盘数据。`/dev/zero`提供了一个无限连续的零字节流。当你从 `/dev/zero` 读取数据时，你会得到一个无限的流，所有的数据都是零字节。
 
+- `dd if=/dev/zero of=/dev/sda` 擦除系统盘数据
+  
+  - 从`/dev/zero`读取数据，然后写入到`/dev/sda`，相当于清空系统盘数据。`/dev/zero`提供了一个无限连续的零字节流。当你从 `/dev/zero` 读取数据时，你会得到一个无限的流，所有的数据都是零字节。
 
 ## 磁盘相关
 
 - `df [-T] [-h]` 查看系统磁盘空间
-  
+
 - `du <目录>` 查看指定目录磁盘大小
+
 - `free` 显示内存资源情况
+
 - `top` 显示系统资源占用排行榜
+  
   - `shift + e` 切换数据显示单位 ( KB,MB,GB ) 
 
 ## 系统
@@ -86,17 +91,13 @@ print("hello world!");
 - `ps [-ef] [-aux]` 
 - `grep` 正则匹配
 
-
-
-
-
 # 配置
 
 ## hosts
 
- ```shell
- /etc/hosts
- ```
+```shell
+/etc/hosts
+```
 
 ## vscode命令参数
 
@@ -169,14 +170,15 @@ alias dis='docker images'
 ## 源
 
 - apt源位置：
-
+  
   ```shell
   /etc/apt/sources.list
   ```
-​	参考: [url](https://developer.aliyun.com/mirror/)
+  
+  ​    参考: [url](https://developer.aliyun.com/mirror/)
 
 - yum源位置:
-
+  
   ```shell
   /etc/yum.repos.d/
   #这里的.d 是一种命名风格，表示directory 目录的意思
@@ -214,6 +216,7 @@ zsh支持插件扩展和主题功能。
 在oh-my-zsh官方的[github wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)中列出了很多内置的主题。我们不仅可以应用这些内置主题，还可以在这些内置主题上进行二次定制，非常银杏化！
 
 - 插件位于:   `~/.oh-my-zsh/pulgins/`
+
 - 主题位于:   `~/.oh-my-zsh/themes/`
 
 - 修改插件/主题： 在`~/.zshrc`中配置。 
@@ -221,59 +224,59 @@ zsh支持插件扩展和主题功能。
 #### 安装oh-my-zsh
 
 1. 检查当前可用shell
-
+   
    ```bash
    cat /etc/shells
    ```
 
 2. 查看当前使用的shell
-
+   
    ```bash
    echo $SHELL
    ```
 
 3. 安装zsh shell
-
+   
    ```bash
    apt install zsh
    ```
 
 4. 切换shell
-
+   
    ```bash
    chsh -s /bin/zsh
    ```
 
 5. 安装oh my zsh
-
+   
    ```bash
    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
    ```
 
 6. 下载语法高亮插件
-
+   
    ```bash
    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-syntax-highlighting
    ```
 
 7. 下载自动提示插件
-
+   
    ```bash
    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh}/plugins/zsh-autosuggestions
    ```
 
 8. 安装插件
-
+   
    ```bash
    nano ~/.zshrc
    ```
-
+   
    ```bash
    plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
    ```
 
 9. 更新`.zshrc`
-
+   
    ```bash
    source ~/.zshrc
    ```
@@ -289,6 +292,7 @@ zsh支持插件扩展和主题功能。
 ```shell
 adduser www
 ```
+
 更改密码
 
 ```shell
@@ -296,7 +300,8 @@ passwd www
 ```
 
 删除用户
-``` shell
+
+```shell
 userdel -r www
 ```
 
@@ -323,19 +328,19 @@ chgrp [-R] groupname filename
 记录一些提升体验的扩展程序：
 
 1. Plank
-
+   
    桌面底部dock栏
-
+   
    ```shell
    sudo apt update && sudo apt install plank
    ```
 
 2. 系统默认输入法Fcitx5
-
+   
    我喜欢极简风格，摒弃那些花里胡哨还占用资源的第三方输入法程序
 
 3. [gnome-shell-extension-appindicator](https://github.com/ubuntu/gnome-shell-extension-appindicator)
-
+   
    因为gnome桌面无法显示后台运行的程序，有的应用程序已关闭就进入后台运行，无法再次唤起。这种情况太让人头疼。这个扩展程序可以让桌面系统显示托盘程序。实现类似win的右下角托盘效果。
 
 ## 体验
@@ -349,7 +354,7 @@ chgrp [-R] groupname filename
 `netstat` 显示系统网络信息 常用参数: 
 
 - `-tunlp` 显示使用tcp协议的进程名，端口，ip等信息
-  
+
 > `netstat -tunlp | grep 781` 查看781进程监听的端口号.
 
 `ifconfig` 用于配置网络接口
@@ -396,30 +401,30 @@ sh jmeter.sh &
 > ${}, [], $(), $(()), [[]], (())的作用
 
 1. `${}`与`$`
-
+   
    都是用来引用变量的。${}可以指定引用的边界，也可以对字符串变量进行截取等
 
 2. `[] `与 `test`
-
+   
    [ ]是test命令的另一种形式，用于判断某个表达式的返回值是0或者非0，常用于if命令的判断条件
    `test $a == "linux"` 等于 `[ $a == "linux" ]`
-
+   
    ```shell
    if test $a == "linux"
    then
-   	echo "i am linux"
+       echo "i am linux"
    elif [ $a == "java" ] 
    then
-   	echo "i am java"
+       echo "i am java"
    fi
    ```
-
+   
    > 注意"[“后和”]“前都需要有空格，并且”=="两边也都要有空格
 
 3. `$()` 和 ``
-
+   
    $()和``的作用一致，都是用来做命令替换用，一般用于将命令返回的结果传递给变量
-
+   
    ```shell
    a=$(ls /home/hadoop101/)
    a=`ls /home/hadoop101/\`
@@ -427,9 +432,9 @@ sh jmeter.sh &
    ```
 
 4. `$[ ] `和` $(( ))`
-
+   
    $[]和$(())的作用一样，都是进行数学运算的，支持±*/%,并且在$[ ]和$(( ))中使用变量不需要$引用，可以直接使用变量名
-
+   
    ```shell
    echo $[2+7]
    # 9
@@ -444,11 +449,11 @@ sh jmeter.sh &
    ```
 
 5. `[[]]`
-
+   
    [[ ]]是[ ]的增强版，其返回值也是0或者非0
-
+   
    - 在`[[]]`中使用> < 不需要转义字符
-
+     
      ```shell
      if [[ $1 > 5 ]]
      then
@@ -457,57 +462,57 @@ sh jmeter.sh &
              echo "$1的值小于5"
      fi
      ```
-
+   
    - 支持&&和||，但是仅支持==和!=的连接
-
+     
      ```shell
      # 正确示例
      if [[ $a != 3 && $a != 10 ]] 
      then
-     	echo "hello i am linux"
+         echo "hello i am linux"
      fi
      # 错误示例：
      if [[ $a > 3 && $a != 10 ]] 
      then
-     	echo "hello i am linux"
+         echo "hello i am linux"
      fi
      ```
-
+   
    - `[[]]`比较字符串支持正则匹配和通配符匹配
-
+     
      ```shell
      # 通配符匹配
      if [[ linux == l?nu? ]]
      then
-     	echo "i am linux"
+         echo "i am linux"
      else
-     	echo "i am not linux"
+         echo "i am not linux"
      fi
      ```
-
+     
      ```shell
      # 正则匹配
      if [[ linux =~ ^li[abn]ux ]]
      then
-     	echo "i am linux"
+         echo "i am linux"
      else
-     	echo "i am not linux"
+         echo "i am not linux"
      fi
      ```
 
 6. `(())`
-
+   
    - 与$结合使用进行数学运算$(( ))
    - 在for循环命令中控制循环，类似于c语言
    - 改变变量的值，且不需要$引用
-
+   
    ```shell
    for((i=1;i<10;i++))
    do
            echo "this is $i"
    done
    ```
-
+   
    ```shell
    i=0
    while [ $i -le 10 ]
@@ -541,10 +546,13 @@ WSL安装: 参考[MS官方文档](https://learn.microsoft.com/zh-cn/windows/wsl/
 - `wsl --help` - 帮助文档
 
 - `wsl` - 启动子系统
+
 - `wsl --shutdown` - 关闭子系统
+
 - `wsl --list -v`  - 列出所有的子系统及其对应的wsl版本号
 
 - `wsl --list --online` - 列出全部可用的子系统
+
 - `wsl -s <子系统>` - 设置默认的子系统
 
 ## 导入和导出
@@ -560,31 +568,31 @@ WSL安装: 参考[MS官方文档](https://learn.microsoft.com/zh-cn/windows/wsl/
 ### 步骤
 
 1. 退出docker desktop , 关闭wsl
-
+   
    ```cmd
    wsl --shutdown
    ```
 
 2. 查看wsl的状态, 确认关闭
-
+   
    ```cmd
    wsl --list -v
    ```
 
 3. 导出docker-desktop-data磁盘文件
-
+   
    ```cmd
    wsl --export docker-desktop-data "D:\\docker-desktop-data.tar"
    ```
 
 4. 卸载docker-desktop-data磁盘文件 ( 此命令会删除 docker-desktop-data 的磁盘映像文件)
-
+   
    ```cmd
    wsl --unregister docker-desktop-data
    ```
 
 5. 将导出的磁盘文件重新导入wsl, 并指定导入的位置
-
+   
    ```cmd
    wsl --import docker-desktop-data "D:\\.WSL\\Docker\\wsl" "D:\\docker-desktop-data.tar" --version 2
    ```
@@ -600,7 +608,7 @@ WSL安装: 参考[MS官方文档](https://learn.microsoft.com/zh-cn/windows/wsl/
 ## 问题记录
 
 1. wsl运行时出现警告信息: 
-
+   
    ```cmd
    wsl: 检测到 localhost 代理配置，但未镜像到 WSL。
    NAT 模式下的 WSL 不支持 localhost 代理。
@@ -629,3 +637,12 @@ WSL安装: 参考[MS官方文档](https://learn.microsoft.com/zh-cn/windows/wsl/
 curl ip.sb
 ```
 
+# 监控系统流量
+
+`iftop` 命令用于监控系统流量。
+
+```shell
+iftop -i eth0
+```
+
+进入交互界面后 按 `h` 显示帮助菜单。
