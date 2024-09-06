@@ -70,25 +70,46 @@ print("hello world!");
 
 ## 系统
 
+- `last` 查看服务器登陆情况（显示ip和登录时间）
+
+- `man` 查看命令的帮助文档
+
 - `uname` 输出特定的系统信息,可以查看系统内核，系统版本等内容
+
 - `tail` 将文件内容写到标准输出(shell) 可以持续用来打印日志文件内容 `tail -f <目录>`
+
 - `more` 分页查看指定目录的完全内容
+
 - `scp` 用于linux之间复制文件和目录
+  
   - `scp abc.txt root@ipaddress:/home` 将abc.txt上传到指定ip地址的home目录下
   - `scp root@ipaddress:/home/abc.txt ./` 将指定ip地址的home目录下的abc.txt下载到当前shell目录下
+
 - `chsh` 更改使用者shell设定(切换shell类型:bash, zsh等)
+
 - `tree <目录>` 显示指定目录的树形结构 
+
 - `whereis`  定位一个“命令”的二进制文件、源文件、手册文件
+
 - `pwd` 显示当前所在完整路径
+
 - `source` 刷新当前shell环境
+
 - `clear` 清除控制台 ( 这个应该刻进基因里了吧... )
+
 - `ssh` ssh协议相关
+  
   - `ssh root@ipaddress` 连接指定ip地址的主机
   - `ssh-keygen -t rsa -C "email@email.com"` 生成包含邮箱签名的rsa密钥对
+
 - `wget [url]` 下载url内容
+
 - `curl -i [url]` 向指定url发送http请求并显示response头
+
 - `lsof -i:80` 查看占用80端口的进程
+
 - `ps [-ef] [-aux]` 
+
 - `grep` 正则匹配
 
 # 配置
