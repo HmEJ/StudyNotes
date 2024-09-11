@@ -184,7 +184,7 @@ export PATH=$PATH:/usr/local/nginx/sbin
 
 ```bash
 alias ll='ls $LS_OPTIONS -l'
-alias dps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}\t{{>
+alias dps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Status}}\t{{.Names}}\t"'
 alias dis='docker images'
 ```
 
