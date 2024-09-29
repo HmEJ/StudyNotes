@@ -940,18 +940,18 @@ app.mount('#app')
 3. 在src下创建一个stores目录
 4. 在stores目录下创建pinia存储库
 
-通过`defineStore`宏函数来创建存储库。`defineStore`第一个参数是仓库id (String)，必须是唯一的。第二个参数是仓库的定义。可以用xuan'xiang'shi (Vue2写法) 或者 `setup`函数 (Vue3写法)
+通过`defineStore`宏函数来创建存储库。`defineStore`第一个参数是仓库id (String)，必须是唯一的。第二个参数是仓库的定义。可以用选项式 (Vue2写法) 或者 `setup`函数 (Vue3写法)
 
 ```js
 // ==> src/stores/web.js
 import {reactive,ref} from 'vue';
 import {defineStore} from 'pinia';
 
-export const useWebStore = reactive("web", ()=>{
-    const web = {
+export const useWebStore = defineStore("web", ()=>{
+    const web = reactive({
         name: "ahang",
         url: "me.ahang.icu"
-    }
+    })
     
     const users = ref(1000)
     
