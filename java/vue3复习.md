@@ -1034,3 +1034,5 @@ export const useWebStore = defineStore("web", () => {
 })
 ```
 
+# axios封装
+

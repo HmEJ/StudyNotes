@@ -626,29 +626,40 @@ WSL安装: 参考[MS官方文档](https://learn.microsoft.com/zh-cn/windows/wsl/
 
 有了wsl这么方便的东西, 还要什么虚拟机, 什么vmware, 什么virtualbox 都靠边站 !  😝. 
 
-## 问题记录
+## 端口转发
 
-1. wsl运行时出现警告信息: 
-   
-   ```cmd
-   wsl: 检测到 localhost 代理配置，但未镜像到 WSL。
-   NAT 模式下的 WSL 不支持 localhost 代理。
+我当前的nginx服务部署在本机的wsl中。现在有一个需求是，局域网内的某台机器希望能够访问到我的nginx服务。直接访问我的ip地址是不行的。直接访问我wsl的ip地址也不行，这里必须要做端口转发，将访问我本机的请求转发到wsl中去.   -- 来源：[微软官方文档](https://learn.microsoft.com/zh-cn/windows/wsl/networking#accessing-a-wsl-2-distribution-from-your-local-area-network-lan)
+
+> 以上问题出现在 当wsl的网络模式为默认模式：NAT模式 下。当wsl网络模式切换为镜像网络模式，以上问题便不存在（可以直接访问wsl中的服务）。
+
+需要在windows上设置端口转发： 使用netsh命令
+
+```powershell
+# 监听任何ip访问80端口的请求，并将其转发到wsl的80端口中
+netsh interface portproxy add v4tov4 listenport=80 listenaddress=0.0.0.0 connectport=80 connectaddress=172.18.132.125
+```
+
+- `listenport`  监听的本机端口
+- `listenaddress` 监听的ip地址 (不指定的话默认是0.0.0.0)
+- `connectport` 希望wsl连接的端口
+- `connectaddress` 通过wsl安装的linux发行版的ip地址
+
+## wsl网络
+
+关于wsl的网络问题，参考 [微软官方文档](https://learn.microsoft.com/zh-cn/windows/wsl/networking) 。该文档介绍了如何镜像网络模式，DNS隧道， 自动代理，防火墙等知识。
+
+## 启用systemd
+
+1. powershell执行 `wsl --update`
+
+2.  编辑 **/etc/wsl.conf**
+
+   ```sh
+   [boot]
+   systemd=true
    ```
 
-**解决方法:**
-
-在`C:\\user\\xxx` 下创建一个 .wslconfig 文件, 内容如下:
-
-        ```yaml
-        [experimental]
-        autoMemoryReclaim=gradual  
-        networkingMode=mirrored
-        dnsTunneling=true
-        firewall=true
-        autoProxy=true
-        ```
-
-然后关闭wsl, 重新启动即可.
+3. 重启wsl
 
 # 查看机器的公网ip
 
