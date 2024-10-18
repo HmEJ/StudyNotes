@@ -678,3 +678,53 @@ iftop -i eth0
 ```
 
 进入交互界面后 按 `h` 显示帮助菜单。
+
+# Windows知识
+
+## 右键在此打开
+
+修改注册表来实现程序右键在此打开的功能
+
+1. 对文件本身
+
+   ```sh
+   HKEY_CLASSES_ROOT\*\shell
+   ```
+
+2. 对文件夹
+
+   ```sh
+   HKEY_CLASSES_ROOT\Directory\shell
+   ```
+
+3. 对空白背景
+
+   ```sh
+   HKEY_CLASSES_ROOT\Directory\Background\shell
+   ```
+
+在对应的shell目录下：
+
+1. 新建项，名称唯一即可。
+
+2. 配置默认值为 “用xxx打开” （即右键菜单显示的文字）
+
+3. 在该项下新建`Command`项
+
+4. `Command`项的默认值要是该程序的可执行文件的路径加上一些参数
+
+   ```sh
+   # 示例: idea打开当前目录
+   "D:\Program Files\JetBrains\IntelliJ IDEA 2024.1.1\bin\idea64.exe" "%V"
+   # 示例: Terminal打开当前目录
+   "D:\Program Files\terminal-1.21.2701.0\WindowsTerminal.exe" -d "%V"
+   # 示例：Code打开选定文件或文件夹
+   "D:\Program Files\Microsoft VS Code\Code.exe" "%1"
+   ```
+
+5. 回到第一步的项目录，新建 “可扩充字符串值”，命名为Icon，指定数据为第四步的路径即可
+
+> 注册表常用参数：
+>
+> 1. **`%V`**：代表当前选定的路径。
+> 2. **`%1`**：代表当前选定的项目的完整路径。
