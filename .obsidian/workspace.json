@@ -1,0 +1,180 @@
+{
+  "main": {
+    "id": "2baa2593923adf8e",
+    "type": "split",
+    "children": [
+      {
+        "id": "671d3e6161743ee0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9a001574cee11dc3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "77fc8bc533f9dc34",
+    "type": "split",
+    "children": [
+      {
+        "id": "6854a14c7fa6509b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4b17a63656b6253e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "e80d9ca3950a78cb",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "bfda0c72dbc09ee4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "e1372b88891f1972",
+    "type": "split",
+    "children": [
+      {
+        "id": "ff0bab2cb28ab7bc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "793307170b0adcc9",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "java/linux知识速记.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "linux知识速记 的反向链接列表"
+            }
+          },
+          {
+            "id": "bef24a32523ae51f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "java/linux知识速记.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "linux知识速记 的出链列表"
+            }
+          },
+          {
+            "id": "2bc8956568b33ac1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "2f6ca3883e393e52",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md"
+              },
+              "icon": "lucide-list",
+              "title": "README 的大纲"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "publish:发布更改": false
+    }
+  },
+  "active": "9a001574cee11dc3",
+  "lastOpenFiles": [
+    "java/JavaScript.md",
+    "README.md",
+    "java/面试简单题测试.md",
+    "java/vue3复习.md",
+    "java/笔记.md",
+    "framework/docker/docker.md",
+    "java/linux知识速记.md",
+    "2024-12-23.md",
+    "未命名.md",
+    "未命名.canvas",
+    "java/🌟重要知识点汇总.md"
+  ]
+}
