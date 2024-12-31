@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "671d3e6161743ee0",
+        "id": "1a4e354421408f85",
         "type": "tabs",
         "children": [
           {
-            "id": "9a001574cee11dc3",
+            "id": "a9c28bd4f042f3f2",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "README"
             }
+          },
+          {
+            "id": "84349392dab47897",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "java/开发随记.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "开发随记"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -139,34 +154,47 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "java/开发随记.md"
               },
               "icon": "lucide-list",
-              "title": "README 的大纲"
+              "title": "开发随记 的大纲"
+            }
+          },
+          {
+            "id": "8a1e5fd3010ba7f0",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
-      "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "publish:发布更改": false
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9a001574cee11dc3",
+  "active": "84349392dab47897",
   "lastOpenFiles": [
-    "java/JavaScript.md",
     "README.md",
+    "java/开发随记.md",
+    "Excalidraw/Drawing 2024-12-31 10.03.54.excalidraw.md",
+    "Excalidraw",
+    "未命名.canvas",
+    "java/JavaScript.md",
     "java/面试简单题测试.md",
     "java/vue3复习.md",
     "java/笔记.md",
@@ -174,7 +202,6 @@
     "java/linux知识速记.md",
     "2024-12-23.md",
     "未命名.md",
-    "未命名.canvas",
     "java/🌟重要知识点汇总.md"
   ]
 }
