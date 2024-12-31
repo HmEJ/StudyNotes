@@ -6,6 +6,7 @@
 2. [linux速查](java/linux知识速记.md)
 3. [git速查](java/Git.md)
 4. [vue3速查](java/vue3复习.md)
+5. [开发随记](java/开发随记.md)
 
 # 记录
 
