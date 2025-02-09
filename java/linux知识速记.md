@@ -558,6 +558,79 @@ sh jmeter.sh &
    done
    ```
 
+# ssh加密隧道
+
+使用ssh建立隧道，安全的访问服务器中的应用。
+
+现在假设服务器ip为 `1.2.3.4` ，其中 `8080` 端口有一个应用。
+
+建立ssh隧道，在本地主机上执行:
+
+```sh
+ssh -N -L 8081:localhost:8080 user@1.2.3.4
+```
+
+通过以上命令，使用ssh进行本地端口转发，将本地 `8081` 端口的流量转发到 `1.2.3.4` 主机的 `8080` 端口上。这样，我们在本地直接访问 `8081` 端口即可使用服务器 `8080` 的服务。
+
+# frp内网穿透
+
+[文档 | frp](https://gofrp.org/zh-cn/docs/)
+
+## 通过frp实现远程访问本机
+
+原理就是通过frp内网穿透将windows主机的远程连接端口（3389）映射到公网服务器上。这样就可以通过公网服务器来对windwos主机进行远程控制了。具体需要编写的配置文件内容如下：
+
+- 公网服务器 frps.toml
+
+```toml
+bindPort = 7777
+
+webServer.addr = "0.0.0.0"
+webServer.port = 8888
+webServer.user = "xxx"
+webServer.password = "xxx"
+
+log.to = "./frpslog/frps.log"
+log.level = "info"
+log.maxDays = 3
+
+auth.method = "token"
+auth.token = "xxx"
+
+allowPorts = [
+        { single = 6666 }
+]
+```
+
+> 解释：
+>
+> bindPort = 7878  frp服务运行的端口
+>
+> webServer  web面板服务
+>
+> log  日志服务
+>
+> auth  认证配置
+>
+> allowPorts  允许转发的 TCP 端口或端口范围
+
+- 本地windows主机
+
+```toml
+[common]
+server_addr = "1.2.3.4"
+server_port = 7777
+token = xxx
+
+[rdp] 
+type = "tcp"
+local_ip = 127.0.0.1
+local_port = 3389
+remote_port = 6666
+```
+
+这样通过访问 `1.2.3.4:6565` 即可对本机进行远程控制。
+
 # WSL
 
 windows subsystem of linux ( windows下的linux子系统 )
