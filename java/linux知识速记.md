@@ -582,6 +582,36 @@ ssh -N -L 8081:localhost:8080 user@1.2.3.4
 
 [文档 | frp](https://gofrp.org/zh-cn/docs/)
 
+## 访问内网web服务
+
+1. frps.toml : 
+
+```toml
+bindPort = 7000
+vhostHTTPPort = 8080
+```
+
+2. frpc.toml
+
+```toml
+serverAddr = "x.x.x.x"
+serverPort = 7000
+
+[[proxies]]
+name = "web"
+type = "http"
+localPort = 80
+customDomains = ["x.x.x.x"]  #如果没有域名,直接填写ip地址
+
+[[proxies]]
+name = "web2"
+type = "http"
+localPort = 8080
+customDomains = ["www.yourdomain2.com"]
+```
+
+3. 通过  `x.x.x.x:8080` 访问web服务，通过 `www.yourdomain2.com:8080` 访问web2服务
+
 ## 通过frp实现远程访问本机
 
 原理就是通过frp内网穿透将windows主机的远程连接端口（3389）映射到公网服务器上。这样就可以通过公网服务器来对windwos主机进行远程控制了。具体需要编写的配置文件内容如下：
