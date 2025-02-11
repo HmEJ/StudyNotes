@@ -1,5 +1,11 @@
 > 记录使用debian过程中收获的一些linux知识点
 
+# 小知识 
+
+1. 有的ubuntu服务器会默认安装一个叫 `needrestart` 的软件。每次通过apt安装完成后都会弹出一个粉色的框询问是否需要重启某个服务。
+
+![](https://cdn.jsdmirror.com/gh/HmEJ/images@main/image-20250211215903828.png)
+
 # she-bang
 
 `#!` 符号在脚本的第一行用于指定解释器运行环境
