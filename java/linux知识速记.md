@@ -667,6 +667,96 @@ remote_port = 6666
 
 这样通过访问 `1.2.3.4:6565` 即可对本机进行远程控制。
 
+# DNS服务器
+
+通过Bind搭建dns服务器
+
+## 安装
+
+- centos
+
+  ```shell
+  yum install bind bind-utils
+  ```
+
+- ubuntu
+
+  ```shell
+  apt install bind9 bind9-utils
+  ```
+
+安装完成后，通过 `systemctl` 查看服务的状态：
+
+```shell
+systemctl status named
+```
+
+## 配置
+
+1. 配置文件
+
+centos配置文件位置:  `/etc/named.conf`
+
+ubuntu配置文件位置: `/etc/bind/named.conf` 
+
+打开配置文件，配置域名解析：
+
+```shell
+options {
+    listen-on port 53 { any; };        //监听所有ipv4流量
+    listen-on-v6 port 53 { none; };   //不监听ipv6流量
+    filter-aaaa-on-v4 yes;           // 过滤IPv6记录（AAAA）
+    dnssec-enable no;               // 完全禁用DNSSEC
+    dnssec-validation no;          // 关闭DNSSEC验证
+    directory       "/var/named";
+    dump-file       "/var/named/data/cache_dump.db";
+    statistics-file "/var/named/data/named_stats.txt";
+    memstatistics-file "/var/named/data/named_mem_stats.txt";
+    allow-query     { any; };
+    recursion yes;
+};
+
+//...其他配置
+
+//默认走223.5.5.5服务器
+zone "." IN {
+	type forward;
+	forwarders { 223.5.5.5; };
+	forward first;
+}
+
+//自定义域名自行解析
+zone "file.com" IN { 
+    type master;
+    file "file.com.zone"  
+};
+
+//...其他配置
+```
+
+2. 配置解析文件
+
+   centos： `/var/named/file.com.zone`
+
+   ubuntu： `/etc/bin/db.file.com`
+
+   ```shell
+   $TTL    604800
+   @       IN      SOA     file.com. root.file.com. (
+                                 2         ; Serial
+                            604800         ; Refresh
+                             86400         ; Retry
+                           2419200         ; Expire
+                            604800 )       ; Negative Cache TTL
+   
+   ;@       IN      NS      ns.file.com.
+   @       IN      A       10.165.1.12   ;配置file.com的 ip地址
+   www     IN      A       10.165.1.12   ;配置www.file.com的 ip地址
+   ns      IN      A       10.165.1.12   ;配置 ns.file.com 的 ip地址
+   ```
+
+3. 重启服务 `systemctl restart named`
+
 # WSL
 
 windows subsystem of linux ( windows下的linux子系统 )
