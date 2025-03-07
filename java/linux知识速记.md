@@ -705,6 +705,7 @@ ubuntu配置文件位置: `/etc/bind/named.conf`
 options {
     listen-on port 53 { any; };        //监听所有ipv4流量
     listen-on-v6 port 53 { none; };   //不监听ipv6流量
+    dnssec-accept-expired no;        // 拒绝过期的DNSSEC记录
     filter-aaaa-on-v4 yes;           // 过滤IPv6记录（AAAA）
     dnssec-enable no;               // 完全禁用DNSSEC
     dnssec-validation no;          // 关闭DNSSEC验证
@@ -722,7 +723,7 @@ options {
 zone "." IN {
 	type forward;
 	forwarders { 223.5.5.5; };
-	forward first;
+	forward only;
 }
 
 //自定义域名自行解析
