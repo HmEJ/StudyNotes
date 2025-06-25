@@ -758,6 +758,15 @@ zone "file.com" IN {
 
 3. 重启服务 `systemctl restart named`
 
+# 同步时间
+
+- `date` 查看当前系统时间
+- `timedatectl` 查看当前系统所有时间信息，包括本地时间、UTC时间、RTC时间（硬件时间）、时区等
+  - `timedatectl set-time "2025-06-25 10:34:00"` 手动设置系统时间（同时更新硬件时间）
+  - `timedatectl set-timezone Asia/Shanghai` 设置时区
+- `hwclock` 查询或设置硬件时间harwaretime
+  - `hwclock -s` 将系统时间设置为硬件时间
+
 # WSL
 
 windows subsystem of linux ( windows下的linux子系统 )
