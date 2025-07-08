@@ -1,8 +1,0 @@
-server:
-  port: 8085
-hm:
-  db:
-    database: hm-trade
-  swagger:
-    title: "黑马交易接口文档"
-    package: com.hmall.trade.controller
